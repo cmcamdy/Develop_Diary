@@ -71,26 +71,9 @@ InferMeta 函数是根据输入参数，推断算子输出 Tensor 基本信息�
 
 修复Op单测时,并不需要我们真正去实现InferMeta,我们只需要根据需要修复Op的InferShape函数稍加修改即可,但是dtype信息需要我们单独设置一下，因为InferShape,不包含dtype信息.一般地，outputs的dtype信息要inputs的dtype一致即可.这里以dpsgd为例，介绍注册InferMeta的流程.
 
-const std::vector<const MetaTensor*>& xs, std::vector<MetaTensor*> outs
 
 
-
-
-
-
-
-x = [ [2d tensor]]
-
-
-
-
-
-
-
-
-
-
-参数对应关系：
+### 参数对应关系：
 
 ```cpp
 - op : split_with_num
