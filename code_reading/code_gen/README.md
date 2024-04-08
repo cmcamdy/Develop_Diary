@@ -1,7 +1,7 @@
 ## 文件说明
 
 - Develop_Diary/code_reading/code_gen/test_yaml下存的是原始构造的yaml
-- Develop_Diary/code_reading/code_gen/test_yaml_parsed下存的是经过pased之后的yaml
+- Develop_Diary/code_reading/code_gen/test_yaml_parsed下存的是经过parsed之后的yaml
 - Develop_Diary/code_reading/code_gen/test_codegen下存的是pir生成的代码
 
 ## 问题的复现
