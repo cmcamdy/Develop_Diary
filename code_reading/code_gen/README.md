@@ -14,6 +14,12 @@
 - 生成的脚本记录在：Develop_Diary/code_reading/code_gen/测试脚本.md
     - 读者如需要复现，可能得费神修改下地址（参考文件说明中的三个地址）
 
+
+### 问题说明
+
+- 当AB 两个fwd op 同时用一个bwd op C，且当AB 参数数量不同时，codegen就会出问题
+
+
 ### 问题复现
 
 - 如果配置重复的名字（如当前的test_yaml/ops_backward.yaml中的两个straight_through_estimator_grad），则在运行op_gen.py的时候会卡在这里：
@@ -78,4 +84,4 @@ def get_input_grad_semantic(op_info, op_info_items):
     
     
 ### 存在的疑问
-- backward中的name可以自定义吗，他和kernel-func之间是什么关系呢？
+- backward.yaml中的name可以自定义吗，他和kernel-func之间是什么关系呢？
