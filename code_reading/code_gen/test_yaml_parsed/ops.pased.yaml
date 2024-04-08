@@ -1,0 +1,133 @@
+- name: partial_sum
+  inputs:
+  - typename: Tensor[]
+    name: x
+    optional: false
+    no_need_buffer: false
+    data_transform: {}
+  attrs:
+  - {typename: int, name: start_index, default_value: '0'}
+  - {typename: int, name: length, default_value: '-1'}
+  outputs:
+  - {typename: Tensor, name: out, optional: false, intermediate: false}
+  no_need_buffer: null
+  data_transform: null
+  support_tensor: []
+  traits: []
+  interfaces: []
+  kernel:
+    func: [partial_sum]
+    param: [x, start_index, length]
+    backend: null
+    layout: null
+    data_type:
+      ordered: false
+      candidates: [x]
+      to_complex_flag: [false]
+    dispatch: {partial_sum: null}
+    force_backend: null
+  infer_meta:
+    func: PartialSumInferMeta
+    param: [x, start_index, length]
+  inplace: null
+  view: null
+  backward: partial_sum_grad
+- name: fake_quantize_dequantize_moving_average_abs_max
+  inputs:
+  - typename: Tensor
+    name: x
+    optional: false
+    no_need_buffer: false
+    data_transform: {}
+  - typename: Tensor
+    name: in_scale
+    optional: false
+    no_need_buffer: false
+    data_transform: {}
+  - typename: Tensor
+    name: in_accum
+    optional: false
+    no_need_buffer: false
+    data_transform: {}
+  - typename: Tensor
+    name: in_state
+    optional: false
+    no_need_buffer: false
+    data_transform: {}
+  attrs:
+  - {typename: float, name: moving_rate, default_value: '0.9'}
+  - {typename: int, name: bit_length, default_value: '8'}
+  - {typename: int, name: round_type, default_value: '0'}
+  - {typename: bool, name: is_test, default_value: 'false'}
+  outputs:
+  - {typename: Tensor, name: out, optional: false, intermediate: false}
+  - {typename: Tensor, name: out_scale, optional: false, intermediate: false}
+  - {typename: Tensor, name: out_state, optional: true, intermediate: false}
+  - {typename: Tensor, name: out_accum, optional: true, intermediate: false}
+  no_need_buffer: null
+  data_transform: null
+  support_tensor: []
+  traits: []
+  interfaces: []
+  kernel:
+    func: [fake_quantize_dequantize_moving_average_abs_max]
+    param: [x, in_scale, in_accum, in_state, moving_rate, bit_length, round_type,
+      is_test]
+    backend: null
+    layout: null
+    data_type:
+      ordered: false
+      candidates: [x]
+      to_complex_flag: [false]
+    dispatch: {fake_quantize_dequantize_moving_average_abs_max: null}
+    force_backend: null
+  infer_meta:
+    func: FakeQuantizeMovingAverageInferMeta
+    param: [x]
+  inplace: null
+  view: null
+  backward: straight_through_estimator_grad
+- name: moving_average_abs_max_scale
+  inputs:
+  - typename: Tensor
+    name: x
+    optional: false
+    no_need_buffer: false
+    data_transform: {}
+  - typename: Tensor
+    name: in_accum
+    optional: true
+    no_need_buffer: false
+    data_transform: {}
+  - typename: Tensor
+    name: in_state
+    optional: true
+    no_need_buffer: false
+    data_transform: {}
+  attrs:
+  - {typename: float, name: moving_rate, default_value: 0.9f}
+  - {typename: bool, name: is_test, default_value: 'false'}
+  outputs:
+  - {typename: Tensor, name: out, optional: true, intermediate: false}
+  - {typename: Tensor, name: out_scale, optional: false, intermediate: false}
+  - {typename: Tensor, name: out_state, optional: true, intermediate: false}
+  - {typename: Tensor, name: out_accum, optional: true, intermediate: false}
+  no_need_buffer: null
+  data_transform: null
+  support_tensor: []
+  traits: []
+  interfaces: []
+  kernel:
+    func: [moving_average_abs_max_scale]
+    param: [x, in_accum, in_state, moving_rate, is_test]
+    backend: null
+    layout: null
+    data_type: null
+    dispatch: {moving_average_abs_max_scale: null}
+    force_backend: null
+  infer_meta:
+    func: MovingAverageAbsMaxScaleInferMeta
+    param: [x, in_accum, in_state]
+  inplace: {out_accum: in_accum, out_state: in_state}
+  view: null
+  backward: straight_through_estimator_grad
