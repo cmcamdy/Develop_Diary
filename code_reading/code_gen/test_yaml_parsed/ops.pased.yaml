@@ -86,7 +86,7 @@
     param: [x]
   inplace: null
   view: null
-  backward: straight_through_estimator_grad
+  backward: fake_quantize_dequantize_moving_average_abs_max_grad
 - name: moving_average_abs_max_scale
   inputs:
   - typename: Tensor
@@ -130,4 +130,33 @@
     param: [x, in_accum, in_state]
   inplace: {out_accum: in_accum, out_state: in_state}
   view: null
-  backward: straight_through_estimator_grad
+  backward: moving_average_abs_max_scale_grad
+- name: straight_through_estimator_grad
+  inputs:
+  - typename: Tensor
+    name: out_grad
+    optional: false
+    no_need_buffer: false
+    data_transform: {}
+  attrs: []
+  outputs:
+  - {typename: Tensor, name: x_grad, optional: false, intermediate: false}
+  no_need_buffer: null
+  data_transform: null
+  support_tensor: []
+  traits: []
+  interfaces: []
+  kernel:
+    func: [straight_through_estimator_grad]
+    param: [out_grad]
+    backend: null
+    layout: null
+    data_type: null
+    dispatch: {straight_through_estimator_grad: null}
+    force_backend: null
+  infer_meta:
+    func: UnchangedInferMeta
+    param: [out_grad]
+  inplace: null
+  view: null
+  backward: null

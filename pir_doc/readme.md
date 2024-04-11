@@ -35,18 +35,23 @@ export FLAGS_PIR_OPTEST=true
 export FLAGS_PIR_OPTEST_WHITE_LIST=true
 export FLAGS_enable_pir_in_executor=true
 
+export FLAGS_PIR_OPTEST=false
+export FLAGS_PIR_OPTEST_WHITE_LIST=false
 export FLAGS_enable_pir_in_executor=false
-export FLAGS_enable_pir_in_executor=true
 export GLOG_v=8
 export GLOG_logtostderr=1
 
 cd build
 time cmake .. -DCMAKE_CUDA_COMPILER=/usr/local/cuda-11.7/bin/nvcc -DPY_VERSION=3.8 -DWITH_GPU=ON -DON_INFER=ON -DWITH_NVCC_LAZY=ON -DWITH_TESTING=ON  -DCMAKE_EXE_LINKER_FLAGS="-Wl,--copy-dt-needed-entries" && make -j 8
 
-pip install -U /home/cmcandy/code/PD/Paddle/build/python/dist/paddlepaddle_gpu-0.0.0-cp38-cp38-linux_x86_64.whl
+pip install -U --force-reinstall /home/cmcandy/code/PD/Paddle/build/python/dist/paddlepaddle_gpu-0.0.0-cp38-cp38-linux_x86_64.whl
 cd .. 
 nohup python test/legacy_test/test_partial_sum_op.py > ../pir_doc/1-partial_sum/logs2.log 2>&1 &
 
 
 cmake .. -DCMAKE_CUDA_COMPILER=/usr/local/cuda-11.7/bin/nvcc -DPY_VERSION=3.8 -DWITH_GPU=ON -DON_INFER=ON -DWITH_NVCC_LAZY=ON -DWITH_TESTING=ON  -DCMAKE_EXE_LINKER_FLAGS="-Wl,--copy-dt-needed-entries"
 make -j 8 > ../../pir_doc/build.log 2>&1 &
+
+
+
+(cmake .. -DCMAKE_CUDA_COMPILER=/usr/local/cuda-11.7/bin/nvcc -DPY_VERSION=3.8 -DWITH_GPU=ON -DON_INFER=ON -DWITH_NVCC_LAZY=ON -DWITH_TESTING=ON  -DCMAKE_EXE_LINKER_FLAGS="-Wl,--copy-dt-needed-entries" && make -j 8 && pip install -U --force-reinstall  /home/cmcandy/code/PD/Paddle/build/python/dist/paddlepaddle_gpu-0.0.0-cp38-cp38-linux_x86_64.whl) > ../../Develop_Diary/pir_doc/3-fake_quantize/cmake_log.log 2>&1 &

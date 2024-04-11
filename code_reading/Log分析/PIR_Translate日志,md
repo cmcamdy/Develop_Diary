@@ -1,0 +1,84 @@
+
+
+
+### partial_sum_grad
+
+```python
+I0411 12:00:24.474489 24771 program_translator.cc:210] =============>start to translate a op: partial_sum_grad
+I0411 12:00:24.474493 24771 ir_context.cc:122] No cache found operation of: [Name=custom_op.partial_sum_grad].
+I0411 12:00:24.474496 24771 op_translator.cc:285] [op name normalizing]: partial_sum_grad to pd_op.partial_sum_grad
+I0411 12:00:24.474498 24771 ir_context.cc:118] Found a cached OpInfo of: [name=pd_op.partial_sum_grad, OpInfo: ptr=0x8ac9560].
+I0411 12:00:24.474507 24771 op_compat_info.h:118] [partial_sum_grad] found X
+I0411 12:00:24.474509 24771 op_compat_info.h:124] [partial_sum_grad] is_grad_arg 1
+I0411 12:00:24.474510 24771 op_compat_info.h:105] [GetGradNameMapping]  Out_grad
+I0411 12:00:24.474512 24771 op_compat_info.h:128] [partial_sum_grad] found Out@GRAD
+I0411 12:00:24.474514 24771 op_translator.cc:473] [op:partial_sum_grad][input] entrance
+I0411 12:00:24.474516 24771 op_translator.cc:479] [op:partial_sum_grad][input] start
+I0411 12:00:24.474517 24771 op_compat_info.h:118] [partial_sum_grad] found X
+I0411 12:00:24.474519 24771 op_translator.cc:494] [op:partial_sum_grad][input]x X
+I0411 12:00:24.474521 24771 op_translator.cc:501] [op:partial_sum_grad][key]Out@GRAD [value] Out@GRAD
+I0411 12:00:24.474524 24771 op_translator.cc:501] [op:partial_sum_grad][key]X [value] x0, x1, x2
+I0411 12:00:24.474526 24771 op_translator.cc:513] [op:partial_sum_grad][input]x X 3[x0, x1, x2]
+I0411 12:00:24.474529 24771 op_translator.cc:543] [op:partial_sum_grad][input]x 1 pir::VectorType<paddle::dialect::DenseTensorType>
+I0411 12:00:24.474530 24771 ir_context.cc:118] Found a cached OpInfo of: [name=builtin.combine, OpInfo: ptr=0x5f64110].
+I0411 12:00:24.474532 24771 storage_manager.cc:81] Try to get a parametric storage of: [TypeId_hash=139924356765216, param_hash=11586981829299].
+I0411 12:00:24.474535 24771 storage_manager.cc:48] Found a cached parametric storage of: [param_hash=11586981829299, storage_ptr=0x99b0000].
+I0411 12:00:24.474537 24771 operation.cc:83] Create Operation [builtin.combine]: {ptr = 0x621d3d0, size = 240} done.
+I0411 12:00:24.474539 24771 value_impl.cc:63] Construct a ValueImpl whose's kind is 0. The value_impl address is: 0x621d3d0
+I0411 12:00:24.474540 24771 value_impl.cc:33] The index of this value is: 0. The address of this value is: 0x8b6f960. This value first use is: 0x621d460.
+I0411 12:00:24.474542 24771 value_impl.cc:33] The index of this value is: 0. The address of this value is: 0x66a0b30. This value first use is: 0x621d480.
+I0411 12:00:24.474545 24771 value_impl.cc:33] The index of this value is: 0. The address of this value is: 0x8256cd0. This value first use is: 0x621d4a0.
+I0411 12:00:24.474546 24771 op_compat_info.h:124] [partial_sum_grad] is_grad_arg 1
+I0411 12:00:24.474548 24771 op_compat_info.h:105] [GetGradNameMapping]  Out_grad
+I0411 12:00:24.474550 24771 op_compat_info.h:128] [partial_sum_grad] found Out@GRAD
+I0411 12:00:24.474551 24771 op_translator.cc:494] [op:partial_sum_grad][input]out_grad Out@GRAD
+I0411 12:00:24.474553 24771 op_translator.cc:501] [op:partial_sum_grad][key]Out@GRAD [value] Out@GRAD
+I0411 12:00:24.474555 24771 op_translator.cc:501] [op:partial_sum_grad][key]X [value] x0, x1, x2
+I0411 12:00:24.474556 24771 op_translator.cc:513] [op:partial_sum_grad][input]out_grad Out@GRAD 1[Out@GRAD]
+I0411 12:00:24.474558 24771 op_translator.cc:543] [op:partial_sum_grad][input]out_grad 0 paddle::dialect::DenseTensorType
+I0411 12:00:24.474560 24771 op_compat_info.h:124] [partial_sum_grad] is_grad_arg 1
+I0411 12:00:24.474565 24771 op_compat_info.h:105] [GetGradNameMapping]  X_grad
+I0411 12:00:24.474566 24771 op_compat_info.h:128] [partial_sum_grad] found X@GRAD
+I0411 12:00:24.474567 24771 op_translator.cc:609] [op:partial_sum_grad][output]x_grad X@GRAD
+I0411 12:00:24.474570 24771 op_translator.cc:631] [op:partial_sum_grad][output]x_grad X@GRAD 3 1
+I0411 12:00:24.474571 24771 op_translator.cc:687] [output translating][partial_sum_grad]x_grad :pir::VectorType<paddle::dialect::DenseTensorType> var: X@GRAD
+I0411 12:00:24.474573 24771 op_translator.cc:706] [output translating][partial_sum_grad]x_grad var: x0@GRAD type: 7
+I0411 12:00:24.474575 24771 type_translator.cc:39] [vartype translating][x0@GRAD] from LOD_TENSOR
+I0411 12:00:24.474577 24771 storage_manager.cc:81] Try to get a parametric storage of: [TypeId_hash=139924356765120, param_hash=18093263537680391099].
+I0411 12:00:24.474579 24771 storage_manager.cc:48] Found a cached parametric storage of: [param_hash=18093263537680391099, storage_ptr=0x99af5d0].
+I0411 12:00:24.474581 24771 op_translator.cc:706] [output translating][partial_sum_grad]x_grad var: x1@GRAD type: 7
+I0411 12:00:24.474583 24771 type_translator.cc:39] [vartype translating][x1@GRAD] from LOD_TENSOR
+I0411 12:00:24.474584 24771 storage_manager.cc:81] Try to get a parametric storage of: [TypeId_hash=139924356765120, param_hash=18093263537680391099].
+I0411 12:00:24.474586 24771 storage_manager.cc:48] Found a cached parametric storage of: [param_hash=18093263537680391099, storage_ptr=0x99af5d0].
+I0411 12:00:24.474588 24771 op_translator.cc:706] [output translating][partial_sum_grad]x_grad var: x2@GRAD type: 7
+I0411 12:00:24.474591 24771 type_translator.cc:39] [vartype translating][x2@GRAD] from LOD_TENSOR
+I0411 12:00:24.474591 24771 storage_manager.cc:81] Try to get a parametric storage of: [TypeId_hash=139924356765120, param_hash=18093263537680391099].
+I0411 12:00:24.474593 24771 storage_manager.cc:48] Found a cached parametric storage of: [param_hash=18093263537680391099, storage_ptr=0x99af5d0].
+I0411 12:00:24.474596 24771 storage_manager.cc:81] Try to get a parametric storage of: [TypeId_hash=139924356765216, param_hash=11586981829299].
+I0411 12:00:24.474596 24771 storage_manager.cc:48] Found a cached parametric storage of: [param_hash=11586981829299, storage_ptr=0x99b0000].
+I0411 12:00:24.474599 24771 op_compat_info.h:159] [partial_sum][start_index] not found
+I0411 12:00:24.474613 24771 op_translator.cc:775] [op: partial_sum_grad][attr] from: start_index to: start_index
+I0411 12:00:24.474617 24771 op_translator.cc:780] attribute in partial_sum_grad name: start_index 1
+I0411 12:00:24.474619 24771 attribute_translator.cc:273] [pir::Int32Attribute] not found
+I0411 12:00:24.474622 24771 attribute_translator.cc:41] translating int
+I0411 12:00:24.474623 24771 storage_manager.cc:81] Try to get a parametric storage of: [TypeId_hash=139924356764968, param_hash=1].
+I0411 12:00:24.474625 24771 storage_manager.cc:48] Found a cached parametric storage of: [param_hash=1, storage_ptr=0x8aeda10].
+I0411 12:00:24.474627 24771 op_compat_info.h:159] [partial_sum][length] not found
+I0411 12:00:24.474629 24771 op_translator.cc:775] [op: partial_sum_grad][attr] from: length to: length
+I0411 12:00:24.474632 24771 op_translator.cc:780] attribute in partial_sum_grad name: length 1
+I0411 12:00:24.474632 24771 attribute_translator.cc:273] [pir::Int32Attribute] not found
+I0411 12:00:24.474634 24771 attribute_translator.cc:41] translating int
+I0411 12:00:24.474637 24771 storage_manager.cc:81] Try to get a parametric storage of: [TypeId_hash=139924356764968, param_hash=18446744073709551615].
+I0411 12:00:24.474637 24771 storage_manager.cc:48] Found a cached parametric storage of: [param_hash=18446744073709551615, storage_ptr=0x99b00f0].
+I0411 12:00:24.474639 24771 op_translator.cc:858] [general op][partial_sum_grad] preparation end.
+I0411 12:00:24.474642 24771 operation.cc:83] Create Operation [pd_op.partial_sum_grad]: {ptr = 0x996d2c0, size = 208} done.
+I0411 12:00:24.474643 24771 value_impl.cc:63] Construct a ValueImpl whose's kind is 0. The value_impl address is: 0x996d2c0
+I0411 12:00:24.474645 24771 value_impl.cc:33] The index of this value is: 0. The address of this value is: 0x621d3d0. This value first use is: 0x996d350.
+I0411 12:00:24.474646 24771 value_impl.cc:33] The index of this value is: 0. The address of this value is: 0x9936ec0. This value first use is: 0x996d370.
+I0411 12:00:24.474648 24771 op_translator.cc:861] [general op][partial_sum_grad] operation creation end.
+I0411 12:00:24.474650 24771 op_translator.cc:864] [general op][partial_sum_grad] operation insertion end.
+I0411 12:00:24.474653 24771 op_translator.cc:814] [output recording][partial_sum_grad]x2@GRAD 0 2
+I0411 12:00:24.474654 24771 op_translator.cc:814] [output recording][partial_sum_grad]x1@GRAD 0 1
+I0411 12:00:24.474656 24771 op_translator.cc:814] [output recording][partial_sum_grad]x0@GRAD 0 0
+I0411 12:00:24.474658 24771 program_translator.cc:544] [op translated][general]0x996d2d8end
+```

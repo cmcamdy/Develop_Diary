@@ -43,13 +43,42 @@
     - {name: length, typename: int}
     outputs:
     - {name: out, typename: Tensor}
-- name: straight_through_estimator_grad
+- name: moving_average_abs_max_scale_grad
   inputs:
   - typename: Tensor
-    name: x
+    name: out_grad
     optional: false
     no_need_buffer: false
     data_transform: {}
+  attrs:
+  - {typename: int, name: bit_length, default_value: '8'}
+  - {typename: int, name: round_type, default_value: '0'}
+  - {typename: bool, name: is_test, default_value: 'false'}
+  outputs:
+  - {typename: Tensor, name: x_grad, optional: false, intermediate: false}
+  no_need_buffer: null
+  data_transform: null
+  support_tensor: []
+  traits: []
+  interfaces: []
+  invoke: {func: straight_through_estimator_grad, args: out_grad}
+  backward: null
+  forward:
+    name: moving_average_abs_max_scale
+    inputs:
+    - {name: x, typename: Tensor}
+    - {name: in_accum, typename: Tensor}
+    - {name: in_state, typename: Tensor}
+    attrs:
+    - {name: moving_rate, typename: float}
+    - {name: is_test, typename: bool}
+    outputs:
+    - {name: out, typename: Tensor}
+    - {name: out_scale, typename: Tensor}
+    - {name: out_state, typename: Tensor}
+    - {name: out_accum, typename: Tensor}
+- name: fake_quantize_dequantize_moving_average_abs_max_grad
+  inputs:
   - typename: Tensor
     name: out_grad
     optional: false
@@ -67,22 +96,7 @@
   support_tensor: []
   traits: []
   interfaces: []
-  kernel:
-    func: [straight_through_estimator_grad]
-    param: [x, out_grad, moving_rate, bit_length, round_type, is_test]
-    backend: null
-    layout: null
-    data_type:
-      ordered: false
-      candidates: [x_grad]
-      to_complex_flag: [false]
-    dispatch: {straight_through_estimator_grad: null}
-    force_backend: null
-  infer_meta:
-    func: UnchangedInferMeta
-    param: [x]
-  inplace: null
-  view: null
+  invoke: {func: straight_through_estimator_grad, args: out_grad}
   backward: null
   forward:
     name: fake_quantize_dequantize_moving_average_abs_max
@@ -95,60 +109,6 @@
     - {name: moving_rate, typename: float}
     - {name: bit_length, typename: int}
     - {name: round_type, typename: int}
-    - {name: is_test, typename: bool}
-    outputs:
-    - {name: out, typename: Tensor}
-    - {name: out_scale, typename: Tensor}
-    - {name: out_state, typename: Tensor}
-    - {name: out_accum, typename: Tensor}
-- name: straight_through_estimator_grad
-  inputs:
-  - typename: Tensor
-    name: x
-    optional: false
-    no_need_buffer: false
-    data_transform: {}
-  - typename: Tensor
-    name: out_grad
-    optional: false
-    no_need_buffer: false
-    data_transform: {}
-  attrs:
-  - {typename: int, name: bit_length, default_value: '8'}
-  - {typename: int, name: round_type, default_value: '0'}
-  - {typename: bool, name: is_test, default_value: 'false'}
-  outputs:
-  - {typename: Tensor, name: x_grad, optional: false, intermediate: false}
-  no_need_buffer: null
-  data_transform: null
-  support_tensor: []
-  traits: []
-  interfaces: []
-  kernel:
-    func: [straight_through_estimator_grad]
-    param: [x, out_grad, bit_length, round_type, is_test]
-    backend: null
-    layout: null
-    data_type:
-      ordered: false
-      candidates: [x_grad]
-      to_complex_flag: [false]
-    dispatch: {straight_through_estimator_grad: null}
-    force_backend: null
-  infer_meta:
-    func: UnchangedInferMeta
-    param: [x]
-  inplace: null
-  view: null
-  backward: null
-  forward:
-    name: moving_average_abs_max_scale
-    inputs:
-    - {name: x, typename: Tensor}
-    - {name: in_accum, typename: Tensor}
-    - {name: in_state, typename: Tensor}
-    attrs:
-    - {name: moving_rate, typename: float}
     - {name: is_test, typename: bool}
     outputs:
     - {name: out, typename: Tensor}
