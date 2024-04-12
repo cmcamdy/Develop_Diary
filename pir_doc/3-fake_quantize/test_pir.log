@@ -1,0 +1,2454 @@
+WARNING: Logging before InitGoogleLogging() is written to STDERR
+I0412 23:26:49.742730 31990 init.cc:98] Before Parse: argc is 2, Init commandline: dummy --tryfromenv=gpugraph_sparse_table_storage_mode,cusolver_dir,enable_pir_api,host_trace_level,gpugraph_offload_param_extends,gpugraph_enable_gpu_direct_access,all_blocks_convert_trt,print_allocator_trace_info,gpugraph_dedup_pull_push_mode,sync_after_alloc,gpugraph_debug_gpu_memory,new_executor_use_local_scope,enable_exit_when_partial_worker,cusparse_dir,einsum_opt,enable_opt_get_features,add_dependency_for_communication_op,call_stack_level,allocator_strategy,alloc_fill_value,local_exe_sub_scope_limit,graph_embedding_split_infer_mode,enable_auto_detect_gpu_topo,tensorrt_dir,free_idle_chunk,dynamic_static_unified_comm,use_auto_growth_pinned_allocator,new_executor_use_cuda_graph,cudnn_dir,sort_sum_gradient,gpugraph_slot_feasign_max_num,enable_graph_multi_node_sampling,convert_all_blocks,memory_fraction_of_eager_deletion,paddle_num_threads,init_allocated_mem,curand_dir,executor_log_deps_every_microseconds,enable_tracker_all2all,enable_async_trace,enable_dependency_builder_debug_info,cuda_memory_async_pool_realease_threshold,prim_skip_dynamic,apply_pass_to_program,cpu_deterministic,reader_queue_speed_test_mode,cudnn_exhaustive_search_times,get_host_by_name_time,async_trace_count,pir_subgraph_saving_dir,auto_free_cudagraph_allocations_on_launch,nccl_blocking_wait,fast_eager_deletion_mode,prim_backward,gpugraph_force_device_batch_num_equal,enable_all2all_use_fp16,enable_pir_in_executor,prim_forward_blacklist,cache_inference_while_scope,tracer_onednn_ops_on,conv_workspace_size_limit,cudnn_exhaustive_search,trt_ibuilder_cache,run_kp_kernel,new_executor_serial_run,npu_storage_format,use_stride_kernel,enable_record_memory,pir_apply_inplace_pass,ir_inplace_kernel_blacklist,gemm_use_half_precision_compute_type,cupti_dir,tracer_profile_fname,selected_gpus,mklml_dir,fuse_parameter_memory_size,dataloader_use_file_descriptor,graph_load_in_parallel,static_executor_perfstat_filepath,save_static_runtime_data,use_auto_growth_v2,gpugraph_merge_grads_segment_size,use_stream_safe_cuda_allocator,prim_all,pe_profile_fname,benchmark_nccl,use_mkldnn,tracer_onednn_ops_off,inner_op_parallelism,lapack_dir,nccl_dir,check_nan_inf_level,graph_neighbor_size_percent,fraction_of_cuda_pinned_memory_to_use,sync_nccl_allreduce,fraction_of_cpu_memory_to_use,log_memory_stats,gpugraph_hbm_table_load_factor,enable_gpu_memory_usage_log,print_ir,search_cache_max_number,prim_check_ops,cublas_dir,gpugraph_parallel_stream_num,initial_cpu_memory_in_mb,cudnn_deterministic,dygraph_debug,enable_cublas_tensor_op_math,auto_growth_chunk_size_in_mb,mkl_dir,enable_dump_main_program,max_inplace_grad_add,gpugraph_enable_segment_merge_grads,gpugraph_enable_hbm_table_collision_stat,enable_unused_var_check,multiple_of_cupti_buffer_size,gpugraph_enable_print_op_debug,cuda_dir,dist_threadpool_size,cusparselt_dir,gpugraph_offload_param_stat,multi_node_sample_use_gpu_table,query_dest_rank_by_multi_node,static_runtime_data_save_path,cudnn_batchnorm_spatial_persistent,enable_adjust_op_order,enable_auto_rdma_trans,eager_delete_tensor_gb,jit_engine_type,enable_neighbor_list_use_uva,use_system_allocator,use_cuda_managed_memory,check_nan_inf,eager_delete_scope,check_infer_symbolic,new_executor_use_inplace,low_precision_op_list,custom_device_mem_record,use_autotune,enable_pir_with_pt_in_dy2st,gpugraph_load_node_list_into_hbm,use_pinned_memory,fraction_of_gpu_memory_to_use,new_executor_static_build,pir_apply_shape_optimization_pass,check_kernel_launch,prim_enabled,gpugraph_storage_mode,gpugraph_offload_gather_copy_maxsize,enable_api_kernel_fallback,fuse_parameter_groups_size,allreduce_record_one_event,new_executor_sequential_run,fleet_executor_with_standalone,gpu_allocator_retry_time,prim_forward,use_cuda_malloc_async_allocator,gpu_memory_limit_mb,free_when_no_cache_hit,reallocate_gpu_memory_in_mb,enable_sparse_inner_gather,embedding_deterministic,op_dir,initial_gpu_memory_in_mb,graph_get_neighbor_id,use_fast_math,enable_gpu_memory_usage_log_mb,use_shm_cache,tensor_operants_mode,cublaslt_exhaustive_search_times,print_sub_graph_dir,set_to_1d,enable_pir_in_executor_trace_run,graph_metapath_split_opt,conv2d_disable_cudnn,use_virtual_memory_auto_growth,gpugraph_parallel_copyer_split_maxsize,benchmark 
+I0412 23:26:49.742849 31990 init.cc:106] After Parse: argc is 2
+I0412 23:26:50.067256 31990 program_interpreter.cc:221] New Executor is Running.
+I0412 23:26:50.067363 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:50.071764 31990 pir_interpreter.cc:1350] New Executor is Running ...
+I0412 23:26:50.071977 31990 pir_interpreter.cc:1376] pir interpreter is running by multi-thread mode ...
+I0412 23:26:50.072098 32012 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:50.072134 32013 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:50.072155 32014 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:50.072186 32015 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:50.072230 32016 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:50.072966 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x6379180) got event_name: TaskCompletion
+I0412 23:26:50.099372 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:50.102697 32017 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:50.102780 32018 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:50.102813 32019 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:50.102857 32020 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:50.102885 32021 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:50.103591 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x754e600) got event_name: TaskCompletion
+I0412 23:26:51.548975 31990 interpreter_util.cc:597] Static build: 0
+W0412 23:26:51.549089 31990 gpu_resources.cc:119] Please NOTE: device: 0, GPU Compute Capability: 8.6, Driver API Version: 11.7, Runtime API Version: 11.7
+W0412 23:26:51.553088 31990 gpu_resources.cc:164] device: 0, cuDNN Version: 8.4.
+I0412 23:26:51.557252 32024 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:51.557355 32025 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:51.557410 32027 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:51.557374 32026 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:51.557492 32029 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:51.557493 32028 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:51.558200 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x4824fed0) got event_name: TaskCompletion
+I0412 23:26:51.586033 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:51.588280 32030 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:51.588330 32031 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:51.588346 32032 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:51.588394 32034 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:51.588356 32033 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:51.588413 32035 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:51.589107 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x482d6760) got event_name: TaskCompletion
+I0412 23:26:51.613165 31990 op_registry.cc:112] CreateOp directly from OpDesc is deprecated. It should only beused in unit tests. Use CreateOp(const OpDesc& op_desc) instead.
+I0412 23:26:51.620741 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:51.621496 31990 interpreter_util.cc:652] Standalone Executor is Used.
+I0412 23:26:51.623494 32036 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:51.623543 32037 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:51.623555 32038 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:51.623610 32040 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:51.623577 32039 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:51.624428 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x4825f040) got event_name: TaskCompletion
+I0412 23:26:51.629138 31990 op_function_common.cc:910] Start Process 3
+I0412 23:26:51.629205 31990 op_function_common.cc:926] Start Process bit_length
+I0412 23:26:51.629212 31990 op_function_common.cc:910] Start Process 5
+I0412 23:26:51.629215 31990 op_function_common.cc:926] Start Process round_type
+I0412 23:26:51.629216 31990 op_function_common.cc:910] Start Process 7
+I0412 23:26:51.629218 31990 op_function_common.cc:926] Start Process quant_axis
+I0412 23:26:51.629220 31990 op_function_common.cc:910] Start Process 9
+I0412 23:26:51.629222 31990 op_function_common.cc:926] Start Process op_role
+I0412 23:26:51.630587 31990 op_registry.cc:112] CreateOp directly from OpDesc is deprecated. It should only beused in unit tests. Use CreateOp(const OpDesc& op_desc) instead.
+I0412 23:26:51.635103 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:51.638042 32041 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:51.638092 32042 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:51.638113 32043 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:51.638123 32044 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:51.638170 32045 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:51.638219 32046 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:51.639101 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x483ef480) got event_name: TaskCompletion
+I0412 23:26:51.644961 31990 op_function_common.cc:910] Start Process 3
+I0412 23:26:51.645023 31990 op_function_common.cc:926] Start Process bit_length
+I0412 23:26:51.645030 31990 op_function_common.cc:910] Start Process 5
+I0412 23:26:51.645032 31990 op_function_common.cc:926] Start Process round_type
+I0412 23:26:51.645035 31990 op_function_common.cc:910] Start Process 7
+I0412 23:26:51.645036 31990 op_function_common.cc:926] Start Process quant_axis
+I0412 23:26:51.645038 31990 op_function_common.cc:910] Start Process 9
+I0412 23:26:51.645040 31990 op_function_common.cc:926] Start Process op_role
+I0412 23:26:51.674760 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:51.677242 32047 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:51.677304 32049 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:51.677281 32048 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:51.677367 32050 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:51.677457 32051 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:51.678227 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x63861b0) got event_name: TaskCompletion
+I0412 23:26:51.702877 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:51.705260 32052 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:51.705313 32054 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:51.705289 32053 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:51.705370 32056 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:51.705314 32055 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:51.706126 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x4823b4c0) got event_name: TaskCompletion
+I0412 23:26:51.733371 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:51.736435 32057 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:51.736495 32058 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:51.736526 32059 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:51.736562 32060 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:51.736606 32061 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:51.736647 32062 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:51.737186 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x7565bd0) got event_name: TaskCompletion
+I0412 23:26:51.762167 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:51.765175 32063 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:51.765229 32065 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:51.765244 32066 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:51.765286 32067 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:51.765213 32064 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:51.765338 32068 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:51.765913 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x754baf0) got event_name: TaskCompletion
+I0412 23:26:51.786798 31990 op_registry.cc:112] CreateOp directly from OpDesc is deprecated. It should only beused in unit tests. Use CreateOp(const OpDesc& op_desc) instead.
+I0412 23:26:51.790421 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:51.793429 32069 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:51.793483 32070 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:51.793509 32072 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:51.793535 32073 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:51.793547 32074 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:51.794412 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x48405b20) got event_name: TaskCompletion
+I0412 23:26:51.799633 31990 op_function_common.cc:910] Start Process 3
+I0412 23:26:51.799688 31990 op_function_common.cc:926] Start Process bit_length
+I0412 23:26:51.799695 31990 op_function_common.cc:910] Start Process 5
+I0412 23:26:51.799697 31990 op_function_common.cc:926] Start Process round_type
+I0412 23:26:51.799700 31990 op_function_common.cc:910] Start Process 7
+I0412 23:26:51.799700 31990 op_function_common.cc:926] Start Process quant_axis
+I0412 23:26:51.799702 31990 op_function_common.cc:910] Start Process 9
+I0412 23:26:51.799705 31990 op_function_common.cc:926] Start Process op_role
+I0412 23:26:51.800544 31990 op_registry.cc:112] CreateOp directly from OpDesc is deprecated. It should only beused in unit tests. Use CreateOp(const OpDesc& op_desc) instead.
+I0412 23:26:51.804634 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:51.807271 32075 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:51.807317 32076 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:51.807339 32077 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:51.807363 32078 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:51.807416 32079 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:51.807469 32080 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:51.808357 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x482a13c0) got event_name: TaskCompletion
+I0412 23:26:51.814750 31990 op_function_common.cc:910] Start Process 3
+I0412 23:26:51.814811 31990 op_function_common.cc:926] Start Process bit_length
+I0412 23:26:51.814821 31990 op_function_common.cc:910] Start Process 5
+I0412 23:26:51.814823 31990 op_function_common.cc:926] Start Process round_type
+I0412 23:26:51.814826 31990 op_function_common.cc:910] Start Process 7
+I0412 23:26:51.814828 31990 op_function_common.cc:926] Start Process quant_axis
+I0412 23:26:51.814831 31990 op_function_common.cc:910] Start Process 9
+I0412 23:26:51.814833 31990 op_function_common.cc:926] Start Process op_role
+I0412 23:26:51.820816 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:51.823645 32081 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:51.823880 32082 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:51.823925 32083 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:51.824033 32084 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:51.824124 32085 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:51.824433 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x483509f0) got event_name: TaskCompletion
+I0412 23:26:51.837352 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:51.839926 32086 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:51.839993 32087 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:51.840014 32088 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:51.840070 32089 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:51.840078 32090 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:51.840322 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x4834e450) got event_name: TaskCompletion
+I0412 23:26:51.849841 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:51.853283 32091 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:51.853336 32092 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:51.853360 32093 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:51.853389 32094 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:51.853433 32095 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:51.853469 32096 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:51.854219 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x4844d6b0) got event_name: TaskCompletion
+I0412 23:26:51.861682 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:51.864630 32097 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:51.864699 32099 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:51.864724 32100 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:51.864745 32101 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:51.864675 32098 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:51.864794 32102 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:51.865486 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x61b4b30) got event_name: TaskCompletion
+I0412 23:26:51.870128 31990 op_registry.cc:112] CreateOp directly from OpDesc is deprecated. It should only beused in unit tests. Use CreateOp(const OpDesc& op_desc) instead.
+I0412 23:26:51.873817 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:51.876145 32103 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:51.876201 32104 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:51.876214 32105 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:51.876238 32106 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:51.876288 32107 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:51.876574 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x4863ff60) got event_name: TaskCompletion
+I0412 23:26:51.888293 31990 op_function_common.cc:910] Start Process 3
+I0412 23:26:51.888372 31990 op_function_common.cc:926] Start Process bit_length
+I0412 23:26:51.888382 31990 op_function_common.cc:910] Start Process 5
+I0412 23:26:51.888386 31990 op_function_common.cc:926] Start Process round_type
+I0412 23:26:51.888388 31990 op_function_common.cc:910] Start Process 7
+I0412 23:26:51.888391 31990 op_function_common.cc:926] Start Process quant_axis
+I0412 23:26:51.888394 31990 op_function_common.cc:910] Start Process 9
+I0412 23:26:51.888396 31990 op_function_common.cc:926] Start Process op_role
+I0412 23:26:51.889173 31990 op_registry.cc:112] CreateOp directly from OpDesc is deprecated. It should only beused in unit tests. Use CreateOp(const OpDesc& op_desc) instead.
+I0412 23:26:51.895535 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:51.901868 32109 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:51.902040 32113 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:51.902127 32114 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:51.901929 32112 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:51.901993 32111 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:51.901891 32110 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:51.903366 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x482b47f0) got event_name: TaskCompletion
+I0412 23:26:51.913933 31990 op_function_common.cc:910] Start Process 3
+I0412 23:26:51.914047 31990 op_function_common.cc:926] Start Process bit_length
+I0412 23:26:51.914062 31990 op_function_common.cc:910] Start Process 5
+I0412 23:26:51.914065 31990 op_function_common.cc:926] Start Process round_type
+I0412 23:26:51.914068 31990 op_function_common.cc:910] Start Process 7
+I0412 23:26:51.914072 31990 op_function_common.cc:926] Start Process quant_axis
+I0412 23:26:51.914073 31990 op_function_common.cc:910] Start Process 9
+I0412 23:26:51.914076 31990 op_function_common.cc:926] Start Process op_role
+I0412 23:26:51.924865 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:51.928478 32119 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:51.928673 32120 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:51.928689 32121 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:51.928721 32122 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:51.929087 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x482b1460) got event_name: TaskCompletion
+I0412 23:26:51.929112 32123 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:51.937397 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:51.939558 32125 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:51.939620 32127 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:51.939595 32126 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:51.939630 32128 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:51.939677 32129 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:51.939908 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x482b9610) got event_name: TaskCompletion
+I0412 23:26:51.949679 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:51.952390 32131 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:51.952410 32132 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:51.952481 32135 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:51.952390 32130 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:51.952422 32133 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:51.952450 32134 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:51.953022 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x482beec0) got event_name: TaskCompletion
+I0412 23:26:51.961140 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:51.966621 32136 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:51.966694 32137 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:51.966717 32138 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:51.966764 32139 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:51.966811 32140 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:51.966858 32141 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:51.967499 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x619d700) got event_name: TaskCompletion
+I0412 23:26:51.974562 31990 op_registry.cc:112] CreateOp directly from OpDesc is deprecated. It should only beused in unit tests. Use CreateOp(const OpDesc& op_desc) instead.
+I0412 23:26:51.979081 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:51.981880 32142 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:51.981947 32144 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:51.981999 32146 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:51.981977 32145 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:51.981977 32143 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:51.982275 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x62f9ce0) got event_name: TaskCompletion
+I0412 23:26:51.989322 31990 op_function_common.cc:910] Start Process 3
+I0412 23:26:51.989388 31990 op_function_common.cc:926] Start Process bit_length
+I0412 23:26:51.989395 31990 op_function_common.cc:910] Start Process 5
+I0412 23:26:51.989398 31990 op_function_common.cc:926] Start Process round_type
+I0412 23:26:51.989399 31990 op_function_common.cc:910] Start Process 7
+I0412 23:26:51.989400 31990 op_function_common.cc:926] Start Process quant_axis
+I0412 23:26:51.989403 31990 op_function_common.cc:910] Start Process 9
+I0412 23:26:51.989404 31990 op_function_common.cc:926] Start Process op_role
+I0412 23:26:51.990223 31990 op_registry.cc:112] CreateOp directly from OpDesc is deprecated. It should only beused in unit tests. Use CreateOp(const OpDesc& op_desc) instead.
+I0412 23:26:51.996515 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:52.000852 32147 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:52.000913 32148 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:52.000953 32150 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:52.000954 32149 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:52.001019 32151 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:52.001112 32152 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:52.002029 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x482e2830) got event_name: TaskCompletion
+I0412 23:26:52.012073 31990 op_function_common.cc:910] Start Process 3
+I0412 23:26:52.012154 31990 op_function_common.cc:926] Start Process bit_length
+I0412 23:26:52.012164 31990 op_function_common.cc:910] Start Process 5
+I0412 23:26:52.012168 31990 op_function_common.cc:926] Start Process round_type
+I0412 23:26:52.012171 31990 op_function_common.cc:910] Start Process 7
+I0412 23:26:52.012174 31990 op_function_common.cc:926] Start Process quant_axis
+I0412 23:26:52.012177 31990 op_function_common.cc:910] Start Process 9
+I0412 23:26:52.012180 31990 op_function_common.cc:926] Start Process op_role
+I0412 23:26:52.017807 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:52.019855 32153 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:52.019915 32154 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:52.019924 32155 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:52.019953 32156 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:52.019999 32157 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:52.020133 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x482e2830) got event_name: TaskCompletion
+I0412 23:26:52.024322 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:52.026207 32158 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:52.026262 32159 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:52.026275 32160 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:52.026300 32161 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:52.026330 32162 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:52.026471 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x47edad00) got event_name: TaskCompletion
+I0412 23:26:52.031342 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:52.034765 32163 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:52.034814 32164 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:52.034834 32165 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:52.034883 32166 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:52.034936 32167 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:52.034998 32168 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:52.035523 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x7565bd0) got event_name: TaskCompletion
+I0412 23:26:52.039649 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:52.042055 32169 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:52.042104 32170 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:52.042130 32171 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:52.042177 32173 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:52.042140 32172 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:52.042232 32174 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:52.042757 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x6217190) got event_name: TaskCompletion
+I0412 23:26:52.044195 31990 op_registry.cc:112] CreateOp directly from OpDesc is deprecated. It should only beused in unit tests. Use CreateOp(const OpDesc& op_desc) instead.
+I0412 23:26:52.048883 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:52.050911 32175 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:52.050993 32176 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:52.051033 32178 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:52.051020 32177 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:52.051074 32179 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:52.051244 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x4868c010) got event_name: TaskCompletion
+I0412 23:26:52.056069 31990 op_function_common.cc:910] Start Process 3
+I0412 23:26:52.056150 31990 op_function_common.cc:926] Start Process bit_length
+I0412 23:26:52.056164 31990 op_function_common.cc:910] Start Process 5
+I0412 23:26:52.056167 31990 op_function_common.cc:926] Start Process round_type
+I0412 23:26:52.056169 31990 op_function_common.cc:910] Start Process 7
+I0412 23:26:52.056172 31990 op_function_common.cc:926] Start Process quant_axis
+I0412 23:26:52.056174 31990 op_function_common.cc:910] Start Process 9
+I0412 23:26:52.056177 31990 op_function_common.cc:926] Start Process op_role
+I0412 23:26:52.056968 31990 op_registry.cc:112] CreateOp directly from OpDesc is deprecated. It should only beused in unit tests. Use CreateOp(const OpDesc& op_desc) instead.
+I0412 23:26:52.060930 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:52.064767 32180 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:52.064849 32181 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:52.064947 32182 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:52.065006 32183 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:52.065080 32184 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:52.065132 32185 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:52.066350 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x4866cc20) got event_name: TaskCompletion
+I0412 23:26:52.070823 31990 op_function_common.cc:910] Start Process 3
+I0412 23:26:52.070871 31990 op_function_common.cc:926] Start Process bit_length
+I0412 23:26:52.070878 31990 op_function_common.cc:910] Start Process 5
+I0412 23:26:52.070880 31990 op_function_common.cc:926] Start Process round_type
+I0412 23:26:52.070883 31990 op_function_common.cc:910] Start Process 7
+I0412 23:26:52.070884 31990 op_function_common.cc:926] Start Process quant_axis
+I0412 23:26:52.070885 31990 op_function_common.cc:910] Start Process 9
+I0412 23:26:52.070894 31990 op_function_common.cc:926] Start Process op_role
+I0412 23:26:52.074661 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:52.076581 32186 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:52.076627 32187 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:52.076640 32188 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:52.076663 32189 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:52.076692 32190 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:52.076803 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x63127b0) got event_name: TaskCompletion
+I0412 23:26:52.080204 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:52.082895 32191 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:52.082953 32192 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:52.082983 32193 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:52.083029 32195 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:52.082993 32194 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:52.083165 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x4866eff0) got event_name: TaskCompletion
+I0412 23:26:52.088197 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:52.090404 32196 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:52.090452 32197 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:52.090481 32199 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:52.090468 32198 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:52.090516 32200 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:52.090571 32201 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:52.091046 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x4825aa60) got event_name: TaskCompletion
+I0412 23:26:52.095084 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:52.098479 32202 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:52.098529 32203 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:52.098546 32204 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:52.098567 32205 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:52.098613 32206 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:52.098640 32207 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:52.099231 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x4825aa60) got event_name: TaskCompletion
+I0412 23:26:52.100958 31990 op_registry.cc:112] CreateOp directly from OpDesc is deprecated. It should only beused in unit tests. Use CreateOp(const OpDesc& op_desc) instead.
+I0412 23:26:52.105448 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:52.107782 32208 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:52.107841 32209 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:52.107913 32210 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:52.107952 32211 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:52.107997 32212 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:52.108158 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x48271350) got event_name: TaskCompletion
+I0412 23:26:52.114339 31990 op_function_common.cc:910] Start Process 3
+I0412 23:26:52.114461 31990 op_function_common.cc:926] Start Process bit_length
+I0412 23:26:52.114535 31990 op_function_common.cc:910] Start Process 5
+I0412 23:26:52.114539 31990 op_function_common.cc:926] Start Process round_type
+I0412 23:26:52.114542 31990 op_function_common.cc:910] Start Process 7
+I0412 23:26:52.114543 31990 op_function_common.cc:926] Start Process quant_axis
+I0412 23:26:52.114545 31990 op_function_common.cc:910] Start Process 9
+I0412 23:26:52.114590 31990 op_function_common.cc:926] Start Process op_role
+I0412 23:26:52.115381 31990 op_registry.cc:112] CreateOp directly from OpDesc is deprecated. It should only beused in unit tests. Use CreateOp(const OpDesc& op_desc) instead.
+I0412 23:26:52.119686 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:52.122401 32213 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:52.122448 32214 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:52.122494 32215 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:52.122506 32216 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:52.122519 32217 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:52.122555 32218 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:52.123296 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x482d9a50) got event_name: TaskCompletion
+I0412 23:26:52.129277 31990 op_function_common.cc:910] Start Process 3
+I0412 23:26:52.129349 31990 op_function_common.cc:926] Start Process bit_length
+I0412 23:26:52.129362 31990 op_function_common.cc:910] Start Process 5
+I0412 23:26:52.129366 31990 op_function_common.cc:926] Start Process round_type
+I0412 23:26:52.129369 31990 op_function_common.cc:910] Start Process 7
+I0412 23:26:52.129371 31990 op_function_common.cc:926] Start Process quant_axis
+I0412 23:26:52.129374 31990 op_function_common.cc:910] Start Process 9
+I0412 23:26:52.129376 31990 op_function_common.cc:926] Start Process op_role
+I0412 23:26:52.133658 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:52.135562 32219 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:52.135617 32220 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:52.135653 32221 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:52.135682 32222 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:52.135774 32223 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:52.135900 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x6260840) got event_name: TaskCompletion
+I0412 23:26:52.139436 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:52.141135 32224 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:52.141189 32225 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:52.141227 32226 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:52.141232 32227 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:52.141316 32228 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:52.141399 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x4826e120) got event_name: TaskCompletion
+I0412 23:26:52.145258 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:52.148855 32229 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:52.148923 32230 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:52.148948 32231 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:52.148967 32232 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:52.149012 32233 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:52.149049 32234 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:52.149685 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x4826e120) got event_name: TaskCompletion
+I0412 23:26:52.153491 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:52.155571 32235 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:52.155612 32236 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:52.155656 32238 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:52.155661 32237 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:52.155712 32240 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:52.155680 32239 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:52.156195 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x4837e7f0) got event_name: TaskCompletion
+I0412 23:26:52.157464 31990 op_registry.cc:112] CreateOp directly from OpDesc is deprecated. It should only beused in unit tests. Use CreateOp(const OpDesc& op_desc) instead.
+I0412 23:26:52.160579 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:52.163012 32241 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:52.163066 32245 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:52.163137 32247 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:52.163174 32248 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:52.163147 32246 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:52.163364 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x48693930) got event_name: TaskCompletion
+I0412 23:26:52.169123 31990 op_function_common.cc:910] Start Process 3
+I0412 23:26:52.169188 31990 op_function_common.cc:926] Start Process bit_length
+I0412 23:26:52.169199 31990 op_function_common.cc:910] Start Process 5
+I0412 23:26:52.169202 31990 op_function_common.cc:926] Start Process round_type
+I0412 23:26:52.169205 31990 op_function_common.cc:910] Start Process 7
+I0412 23:26:52.169207 31990 op_function_common.cc:926] Start Process quant_axis
+I0412 23:26:52.169210 31990 op_function_common.cc:910] Start Process 9
+I0412 23:26:52.169212 31990 op_function_common.cc:926] Start Process op_role
+I0412 23:26:52.169771 31990 op_registry.cc:112] CreateOp directly from OpDesc is deprecated. It should only beused in unit tests. Use CreateOp(const OpDesc& op_desc) instead.
+I0412 23:26:52.174090 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:52.177031 32249 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:52.177079 32250 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:52.177134 32252 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:52.177150 32251 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:52.177150 32253 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:52.177232 32254 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:52.178128 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x48368b20) got event_name: TaskCompletion
+I0412 23:26:52.184582 31990 op_function_common.cc:910] Start Process 3
+I0412 23:26:52.184644 31990 op_function_common.cc:926] Start Process bit_length
+I0412 23:26:52.184652 31990 op_function_common.cc:910] Start Process 5
+I0412 23:26:52.184653 31990 op_function_common.cc:926] Start Process round_type
+I0412 23:26:52.184655 31990 op_function_common.cc:910] Start Process 7
+I0412 23:26:52.184657 31990 op_function_common.cc:926] Start Process quant_axis
+I0412 23:26:52.184659 31990 op_function_common.cc:910] Start Process 9
+I0412 23:26:52.184661 31990 op_function_common.cc:926] Start Process op_role
+I0412 23:26:52.188469 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:52.190424 32255 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:52.190481 32256 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:52.190531 32257 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:52.190532 32258 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:52.190577 32259 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:52.190728 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x485926c0) got event_name: TaskCompletion
+I0412 23:26:52.194119 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:52.196491 32260 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:52.196558 32262 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:52.196525 32261 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:52.196625 32263 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:52.196691 32264 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:52.196826 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x486b8bf0) got event_name: TaskCompletion
+I0412 23:26:52.202245 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:52.204602 32265 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:52.204653 32266 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:52.204671 32267 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:52.204725 32268 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:52.204780 32269 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:52.204818 32270 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:52.205379 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x619ecb0) got event_name: TaskCompletion
+I0412 23:26:52.209427 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:52.212194 32271 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:52.212236 32272 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:52.212257 32273 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:52.212298 32274 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:52.212337 32276 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:52.212309 32275 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:52.212915 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x619ecb0) got event_name: TaskCompletion
+I0412 23:26:52.214433 31990 op_registry.cc:112] CreateOp directly from OpDesc is deprecated. It should only beused in unit tests. Use CreateOp(const OpDesc& op_desc) instead.
+I0412 23:26:52.219455 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:52.222219 32277 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:52.222316 32278 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:52.222376 32280 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:52.222353 32279 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:52.222406 32281 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:52.222535 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x4827a610) got event_name: TaskCompletion
+I0412 23:26:52.228381 31990 op_function_common.cc:910] Start Process 3
+I0412 23:26:52.228442 31990 op_function_common.cc:926] Start Process bit_length
+I0412 23:26:52.228448 31990 op_function_common.cc:910] Start Process 5
+I0412 23:26:52.228451 31990 op_function_common.cc:926] Start Process round_type
+I0412 23:26:52.228452 31990 op_function_common.cc:910] Start Process 7
+I0412 23:26:52.228454 31990 op_function_common.cc:926] Start Process quant_axis
+I0412 23:26:52.228456 31990 op_function_common.cc:910] Start Process 9
+I0412 23:26:52.228457 31990 op_function_common.cc:926] Start Process op_role
+I0412 23:26:52.229033 31990 op_registry.cc:112] CreateOp directly from OpDesc is deprecated. It should only beused in unit tests. Use CreateOp(const OpDesc& op_desc) instead.
+I0412 23:26:52.233036 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:52.236402 32282 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:52.236474 32283 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:52.236518 32284 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:52.236562 32286 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:52.236528 32285 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:52.236582 32287 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:52.237727 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x4822bba0) got event_name: TaskCompletion
+I0412 23:26:52.242833 31990 op_function_common.cc:910] Start Process 3
+I0412 23:26:52.242892 31990 op_function_common.cc:926] Start Process bit_length
+I0412 23:26:52.242902 31990 op_function_common.cc:910] Start Process 5
+I0412 23:26:52.242961 31990 op_function_common.cc:926] Start Process round_type
+I0412 23:26:52.242970 31990 op_function_common.cc:910] Start Process 7
+I0412 23:26:52.243018 31990 op_function_common.cc:926] Start Process quant_axis
+I0412 23:26:52.243057 31990 op_function_common.cc:910] Start Process 9
+I0412 23:26:52.243062 31990 op_function_common.cc:926] Start Process op_role
+/home/cmcandy/.local/lib/python3.8/site-packages/paddle/base/framework.py:4509: DeprecationWarning: Op `<class 'type'>` is executed through `append_op` under the dynamic mode, the corresponding API implementation needs to be upgraded to using `_C_ops` method.
+  warnings.warn(
+/home/cmcandy/.local/lib/python3.8/site-packages/paddle/base/framework.py:618: VisibleDeprecationWarning: [93m
+Warning:
+API "paddle.base.dygraph.tensor_patch_methods.gradient" is deprecated since 2.1.0, and will be removed in future versions.
+    Reason: Please use tensor.grad, which returns the tensor value of the gradient. [0m
+  return func(*args, **kwargs)
+.I0412 23:26:52.276594 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:52.280925 32290 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:52.281051 32291 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:52.281100 32293 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:52.281087 32292 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:52.281267 32294 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:52.282024 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x638ffd0) got event_name: TaskCompletion
+I0412 23:26:52.306507 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:52.309299 32295 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:52.309355 32297 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:52.309341 32296 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:52.309377 32298 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:52.309408 32299 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:52.309926 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x485e3250) got event_name: TaskCompletion
+I0412 23:26:52.335691 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:52.338984 32300 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:52.339040 32301 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:52.339082 32303 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:52.339098 32302 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:52.339120 32304 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:52.339161 32305 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:52.340152 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x4825c150) got event_name: TaskCompletion
+I0412 23:26:52.368151 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:52.370961 32306 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:52.371026 32307 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:52.371083 32308 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:52.371114 32309 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:52.371183 32310 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:52.371234 32311 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:52.371776 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x486af9d0) got event_name: TaskCompletion
+.I0412 23:26:52.419912 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:52.422560 32312 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:52.422606 32313 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:52.422664 32314 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:52.423152 32315 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:52.423218 32316 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:52.423802 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x48668ab0) got event_name: TaskCompletion
+I0412 23:26:52.453759 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:52.456231 32317 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:52.456283 32318 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:52.456295 32319 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:52.456315 32320 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:52.456358 32321 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:52.456820 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x486be670) got event_name: TaskCompletion
+I0412 23:26:52.482019 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:52.484805 32322 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:52.484859 32323 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:52.484920 32324 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:52.484921 32325 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:52.484969 32326 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:52.485118 32327 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:52.485687 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x486af9d0) got event_name: TaskCompletion
+I0412 23:26:52.513981 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:52.517309 32328 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:52.517388 32329 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:52.517437 32330 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:52.517470 32331 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:52.517527 32332 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:52.517565 32333 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:52.518141 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x4865c190) got event_name: TaskCompletion
+.I0412 23:26:52.565111 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:52.568172 32334 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:52.568229 32335 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:52.568276 32336 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:52.568295 32337 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:52.568343 32338 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:52.569090 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x4865c190) got event_name: TaskCompletion
+I0412 23:26:52.598245 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:52.602331 32341 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:52.602375 32342 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:52.602401 32343 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:52.602468 32344 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:52.602520 32345 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:52.603178 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x48269b90) got event_name: TaskCompletion
+I0412 23:26:52.656666 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:52.660452 32348 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:52.660519 32349 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:52.660550 32350 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:52.660567 32351 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:52.660676 32352 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:52.660769 32353 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:52.661513 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x48411ad0) got event_name: TaskCompletion
+I0412 23:26:52.700701 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:52.703886 32354 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:52.703941 32355 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:52.703958 32356 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:52.703984 32357 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:52.704025 32358 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:52.704056 32359 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:52.704759 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x48411ad0) got event_name: TaskCompletion
+.I0412 23:26:52.752593 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:52.754920 32360 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:52.754971 32361 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:52.754994 32362 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:52.755007 32363 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:52.755045 32364 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:52.755339 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x6b1c6d0) got event_name: TaskCompletion
+I0412 23:26:52.763559 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:52.765806 32365 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:52.765857 32366 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:52.765870 32367 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:52.765888 32368 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:52.765937 32369 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:52.766167 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x6b1c6d0) got event_name: TaskCompletion
+I0412 23:26:52.774930 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:52.777359 32370 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:52.777441 32371 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:52.777485 32373 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:52.777462 32372 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:52.777581 32374 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:52.777621 32375 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:52.778067 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x6b1c6d0) got event_name: TaskCompletion
+I0412 23:26:52.787518 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:52.790350 32376 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:52.790429 32378 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:52.790402 32377 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:52.790506 32380 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:52.790570 32381 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:52.790441 32379 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:52.791031 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x4869f890) got event_name: TaskCompletion
+I0412 23:26:52.806481 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:52.808490 32382 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:52.808534 32383 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:52.808557 32384 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:52.808575 32385 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:52.808614 32386 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:52.808853 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x4a97da10) got event_name: TaskCompletion
+I0412 23:26:52.818414 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:52.820518 32387 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:52.820567 32388 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:52.820580 32389 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:52.820641 32390 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:52.820691 32391 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:52.820935 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x6b1c6d0) got event_name: TaskCompletion
+I0412 23:26:52.828455 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:52.831512 32392 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:52.831584 32393 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:52.831626 32395 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:52.831597 32394 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:52.831676 32396 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:52.831718 32397 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:52.832284 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x6b1c6d0) got event_name: TaskCompletion
+I0412 23:26:52.841332 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:52.843815 32398 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:52.843874 32399 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:52.843889 32400 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:52.843915 32401 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:52.843991 32402 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:52.844007 32403 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:52.844514 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x48660880) got event_name: TaskCompletion
+I0412 23:26:52.853521 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:52.855409 32404 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:52.855464 32405 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:52.855494 32406 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:52.855513 32407 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:52.855568 32408 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:52.855767 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x485e3250) got event_name: TaskCompletion
+I0412 23:26:52.864377 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:52.866340 32409 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:52.866390 32410 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:52.866434 32411 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:52.866448 32412 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:52.866462 32413 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:52.866693 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x631a940) got event_name: TaskCompletion
+I0412 23:26:52.878114 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:52.881497 32414 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:52.881561 32417 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:52.881532 32415 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:52.881547 32416 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:52.881610 32418 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:52.881641 32419 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:52.882504 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x47ed1b10) got event_name: TaskCompletion
+I0412 23:26:52.894682 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:52.898020 32420 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:52.898037 32421 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:52.898051 32422 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:52.898067 32423 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:52.898099 32424 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:52.898190 32425 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:52.898978 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x48660880) got event_name: TaskCompletion
+I0412 23:26:52.913353 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:52.916287 32426 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:52.916363 32428 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:52.916368 32429 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:52.916337 32427 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:52.916514 32430 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:52.916771 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x4828d510) got event_name: TaskCompletion
+I0412 23:26:52.927079 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:52.930392 32431 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:52.930466 32433 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:52.930486 32434 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:52.930430 32432 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:52.930521 32435 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:52.930816 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x47ed1b10) got event_name: TaskCompletion
+I0412 23:26:52.938509 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:52.941468 32436 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:52.941478 32437 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:52.941484 32438 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:52.941514 32439 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:52.941561 32440 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:52.941591 32441 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:52.942443 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x47ed1b10) got event_name: TaskCompletion
+I0412 23:26:52.951058 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:52.953655 32442 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:52.953698 32443 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:52.953747 32444 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:52.953791 32445 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:52.953858 32446 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:52.953867 32447 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:52.954614 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x485a5880) got event_name: TaskCompletion
+I0412 23:26:52.963701 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:52.966356 32448 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:52.966400 32449 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:52.966415 32450 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:52.966439 32451 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:52.966487 32452 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:52.966596 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x47ed1b10) got event_name: TaskCompletion
+I0412 23:26:52.970252 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:52.972126 32453 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:52.972174 32454 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:52.972218 32455 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:52.972247 32457 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:52.972220 32456 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:52.972374 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x48249730) got event_name: TaskCompletion
+I0412 23:26:52.976217 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:52.978567 32458 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:52.978607 32459 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:52.978627 32460 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:52.978643 32461 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:52.978682 32462 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:52.978729 32463 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:52.979617 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x48493e10) got event_name: TaskCompletion
+I0412 23:26:52.985097 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:52.988139 32464 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:52.988206 32467 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:52.988147 32465 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:52.988281 32468 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:52.988166 32466 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:52.988356 32469 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:52.988956 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x47ed1b10) got event_name: TaskCompletion
+I0412 23:26:52.993872 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:52.996613 32470 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:52.996727 32472 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:52.996743 32471 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:52.996830 32473 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:52.996896 32474 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:52.997014 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x619f920) got event_name: TaskCompletion
+I0412 23:26:53.001199 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:53.003051 32475 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:53.003120 32477 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:53.003165 32479 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:53.003132 32478 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:53.003089 32476 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:53.003314 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x4874e830) got event_name: TaskCompletion
+I0412 23:26:53.007906 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:53.010600 32480 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:53.010644 32481 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:53.010668 32482 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:53.010722 32483 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:53.010768 32485 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:53.010738 32484 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:53.011245 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x482c6110) got event_name: TaskCompletion
+I0412 23:26:53.016628 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:53.019129 32486 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:53.019199 32488 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:53.019234 32490 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:53.019268 32491 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:53.019176 32487 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:53.019258 32489 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:53.019826 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x482c3790) got event_name: TaskCompletion
+I0412 23:26:53.024305 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:53.027617 32492 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:53.027669 32493 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:53.027741 32494 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:53.027781 32495 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:53.027841 32496 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:53.028084 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x48493e10) got event_name: TaskCompletion
+I0412 23:26:53.033330 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:53.035436 32497 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:53.035477 32498 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:53.035496 32499 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:53.035549 32500 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:53.035562 32501 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:53.035672 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x75a4220) got event_name: TaskCompletion
+I0412 23:26:53.039170 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:53.041678 32502 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:53.041736 32503 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:53.041769 32505 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:53.041806 32506 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:53.041839 32507 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:53.041783 32504 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:53.042337 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x48360d20) got event_name: TaskCompletion
+I0412 23:26:53.047297 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:53.052289 32508 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:53.052356 32510 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:53.052335 32509 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:53.052408 32511 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:53.052492 32512 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:53.052547 32513 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:53.053148 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x486af9d0) got event_name: TaskCompletion
+I0412 23:26:53.058065 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:53.059962 32514 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:53.060015 32515 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:53.060036 32516 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:53.060062 32517 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:53.060088 32518 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:53.060210 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x486af9d0) got event_name: TaskCompletion
+I0412 23:26:53.065171 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:53.067773 32519 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:53.067886 32520 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:53.067911 32521 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:53.067972 32522 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:53.068096 32523 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:53.068262 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x486af9d0) got event_name: TaskCompletion
+I0412 23:26:53.072059 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:53.075371 32524 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:53.075443 32526 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:53.075412 32525 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:53.075511 32528 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:53.075493 32527 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:53.075536 32529 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:53.076085 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x486af9d0) got event_name: TaskCompletion
+I0412 23:26:53.081192 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:53.083746 32530 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:53.083807 32531 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:53.083820 32532 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:53.083865 32533 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:53.083972 32534 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:53.084010 32535 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:53.084515 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x486af9d0) got event_name: TaskCompletion
+I0412 23:26:53.089838 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:53.092442 32536 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:53.092485 32537 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:53.092511 32538 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:53.092546 32539 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:53.092590 32541 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:53.092592 32540 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:53.093159 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x486af9d0) got event_name: TaskCompletion
+I0412 23:26:53.104468 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:53.107790 32542 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:53.107846 32544 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:53.107900 32545 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:53.107838 32543 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:53.107921 32546 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:53.107995 32547 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:53.108510 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x486af9d0) got event_name: TaskCompletion
+I0412 23:26:53.117262 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:53.119678 32548 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:53.119724 32549 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:53.119750 32550 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:53.119827 32552 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:53.119854 32553 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:53.119792 32551 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:53.120340 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x486af9d0) got event_name: TaskCompletion
+I0412 23:26:53.136413 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:53.138754 32554 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:53.138803 32555 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:53.138826 32556 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:53.138872 32558 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:53.138846 32557 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:53.138921 32559 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:53.139456 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x486af9d0) got event_name: TaskCompletion
+I0412 23:26:53.147574 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:53.151221 32560 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:53.151278 32562 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:53.151293 32563 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:53.151259 32561 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:53.151361 32564 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:53.151377 32565 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:53.152017 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x482c3790) got event_name: TaskCompletion
+I0412 23:26:53.161156 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:53.164697 32566 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:53.164821 32567 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:53.164865 32568 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:53.164908 32569 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:53.164948 32570 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:53.164992 32571 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:53.165546 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x485a5880) got event_name: TaskCompletion
+I0412 23:26:53.174376 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:53.177372 32572 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:53.177434 32573 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:53.177479 32575 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:53.177462 32574 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:53.177521 32576 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:53.177546 32577 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:53.178099 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x48495160) got event_name: TaskCompletion
+I0412 23:26:53.187323 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:53.190621 32578 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:53.190672 32579 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:53.190690 32580 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:53.190768 32583 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:53.190753 32581 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:53.190754 32582 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:53.191484 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x4828bd30) got event_name: TaskCompletion
+I0412 23:26:53.200747 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:53.203166 32584 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:53.203210 32585 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:53.203274 32586 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:53.203274 32587 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:53.203294 32588 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:53.203375 32589 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:53.203881 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x4828bd30) got event_name: TaskCompletion
+I0412 23:26:53.218312 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:53.220991 32590 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:53.221043 32591 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:53.221066 32592 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:53.221107 32593 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:53.221124 32594 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:53.221146 32595 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:53.221709 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x61b3760) got event_name: TaskCompletion
+I0412 23:26:53.229992 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:53.233484 32596 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:53.233553 32597 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:53.233578 32598 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:53.233618 32600 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:53.233650 32599 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:53.233665 32601 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:53.234383 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x482ddca0) got event_name: TaskCompletion
+I0412 23:26:53.244328 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:53.247996 32602 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:53.248103 32603 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:53.248172 32604 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:53.248209 32605 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:53.248265 32606 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:53.248333 32607 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:53.248968 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x482ddca0) got event_name: TaskCompletion
+I0412 23:26:53.261328 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:53.263757 32608 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:53.263835 32610 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:53.263859 32611 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:53.263809 32609 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:53.263922 32612 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:53.263972 32613 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:53.264514 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x48218d40) got event_name: TaskCompletion
+I0412 23:26:53.269721 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:53.273088 32614 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:53.273144 32615 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:53.273180 32617 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:53.273156 32616 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:53.273218 32618 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:53.273244 32619 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:53.273767 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x4ab8c9f0) got event_name: TaskCompletion
+I0412 23:26:53.277693 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:53.280130 32620 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:53.280207 32622 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:53.280185 32621 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:53.280273 32624 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:53.280230 32623 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:53.280301 32625 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:53.280956 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x4ab8c9f0) got event_name: TaskCompletion
+I0412 23:26:53.287578 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:53.290707 32626 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:53.290777 32627 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:53.290800 32628 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:53.290807 32629 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:53.290846 32630 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:53.290906 32631 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:53.291359 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x4867f5e0) got event_name: TaskCompletion
+I0412 23:26:53.295246 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:53.298925 32632 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:53.299041 32634 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:53.299077 32635 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:53.299109 32636 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:53.299059 32633 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:53.299163 32637 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:53.299844 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x620f050) got event_name: TaskCompletion
+I0412 23:26:53.305244 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:53.307713 32638 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:53.307778 32639 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:53.307849 32640 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:53.307857 32641 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:53.307935 32643 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:53.307929 32642 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:53.308492 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x48651ac0) got event_name: TaskCompletion
+I0412 23:26:53.312348 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:53.314901 32644 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:53.314972 32646 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:53.314951 32645 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:53.314997 32647 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:53.315066 32649 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:53.315032 32648 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:53.315603 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x4aac1d00) got event_name: TaskCompletion
+I0412 23:26:53.320096 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:53.323570 32650 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:53.323616 32651 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:53.323657 32652 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:53.323673 32653 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:53.323801 32654 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:53.323758 32655 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:53.324465 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x48651ac0) got event_name: TaskCompletion
+I0412 23:26:53.328434 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:53.332180 32656 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:53.332237 32658 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:53.332260 32659 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:53.332229 32657 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:53.332322 32660 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:53.332343 32661 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:53.333038 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x48651ac0) got event_name: TaskCompletion
+I0412 23:26:53.338155 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:53.340481 32662 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:53.340538 32663 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:53.340555 32664 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:53.340610 32666 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:53.340569 32665 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:53.340649 32667 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:53.341269 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x48273b30) got event_name: TaskCompletion
+I0412 23:26:53.344854 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:53.348516 32668 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:53.348570 32669 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:53.348579 32670 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:53.348603 32671 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:53.348657 32672 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:53.348677 32673 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:53.349189 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x48597b40) got event_name: TaskCompletion
+I0412 23:26:53.353293 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:53.355636 32674 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:53.355690 32675 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:53.355706 32676 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:53.355722 32677 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:53.355759 32678 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:53.355808 32679 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:53.356276 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x48597b40) got event_name: TaskCompletion
+.I0412 23:26:53.392295 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:53.395231 32680 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:53.395298 32681 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:53.395336 32682 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:53.395377 32684 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:53.395377 32683 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:53.395865 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x48597b40) got event_name: TaskCompletion
+I0412 23:26:53.413318 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:53.415603 32685 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:53.415650 32686 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:53.415678 32687 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:53.415750 32688 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:53.415764 32689 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:53.416225 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x4abfcc80) got event_name: TaskCompletion
+I0412 23:26:53.431592 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:53.434789 32690 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:53.434875 32692 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:53.434842 32691 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:53.434952 32694 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:53.434923 32693 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:53.434959 32695 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:53.435740 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x4a7c4070) got event_name: TaskCompletion
+I0412 23:26:53.452507 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:53.454847 32696 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:53.454901 32697 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:53.454914 32698 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:53.454949 32699 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:53.454972 32700 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:53.455008 32701 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:53.455672 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x4ac19390) got event_name: TaskCompletion
+.I0412 23:26:53.486101 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:53.488584 32702 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:53.488628 32703 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:53.488679 32704 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:53.488685 32705 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:53.488701 32706 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:53.488729 32707 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:53.489290 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x4a6cacb0) got event_name: TaskCompletion
+I0412 23:26:53.505028 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:53.509732 32708 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:53.509816 32710 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:53.509891 32711 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:53.509927 32712 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:53.509781 32709 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:53.509943 32713 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:53.510628 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x6b1c6d0) got event_name: TaskCompletion
+I0412 23:26:53.529676 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:53.532505 32714 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:53.532552 32715 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:53.532627 32716 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:53.532666 32717 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:53.532702 32718 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:53.532742 32719 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:53.533354 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x6213190) got event_name: TaskCompletion
+.I0412 23:26:53.555728 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:53.560312 32720 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:53.560436 32721 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:53.560437 32723 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:53.560608 32722 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:53.560714 32724 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:53.561010 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x6213190) got event_name: TaskCompletion
+I0412 23:26:53.578758 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:53.581873 32725 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:53.581918 32726 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:53.581933 32727 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:53.581959 32728 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:53.581990 32729 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:53.582438 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x482d0b60) got event_name: TaskCompletion
+I0412 23:26:53.599799 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:53.602751 32730 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:53.602798 32731 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:53.602828 32733 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:53.602809 32732 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:53.602874 32734 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:53.602908 32735 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:53.603577 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x4aa31c50) got event_name: TaskCompletion
+I0412 23:26:53.622095 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:53.625173 32736 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:53.625238 32737 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:53.625273 32739 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:53.625308 32740 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:53.625350 32741 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:53.625286 32738 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:53.626076 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x4828bd30) got event_name: TaskCompletion
+.I0412 23:26:53.645720 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:53.648744 32742 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:53.648798 32743 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:53.648861 32744 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:53.648921 32746 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:53.648921 32745 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:53.649032 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x482d0b60) got event_name: TaskCompletion
+I0412 23:26:53.652367 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:53.654093 32747 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:53.654134 32748 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:53.654148 32749 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:53.654211 32750 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:53.654227 32751 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:53.654299 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x483319c0) got event_name: TaskCompletion
+I0412 23:26:53.658100 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:53.660719 32752 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:53.660763 32753 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:53.660835 32754 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:53.660861 32755 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:53.660889 32756 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:53.660920 32757 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:53.661585 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x62f0ae0) got event_name: TaskCompletion
+I0412 23:26:53.665185 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:53.668196 32758 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:53.668256 32759 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:53.668339 32760 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:53.668373 32762 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:53.668401 32763 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:53.668363 32761 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:53.669064 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x4828bd30) got event_name: TaskCompletion
+.I0412 23:26:53.673440 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:53.675505 32764 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:53.675554 32766 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:53.675534 32765 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:53.675637   300 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:53.675603 32767 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:53.675714 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x48411ad0) got event_name: TaskCompletion
+I0412 23:26:53.679051 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:53.681015   301 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:53.681053   302 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:53.681116   303 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:53.681195   304 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:53.681243 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x62fe7e0) got event_name: TaskCompletion
+I0412 23:26:53.681210   305 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:53.685190 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:53.687402   306 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:53.687451   307 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:53.687523   308 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:53.687568   310 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:53.687587   311 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:53.687551   309 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:53.688176 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x482d0b60) got event_name: TaskCompletion
+I0412 23:26:53.692792 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:53.696566   312 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:53.696622   313 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:53.696653   314 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:53.696691   315 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:53.696723   316 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:53.696785   317 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:53.697952 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x4a8fe560) got event_name: TaskCompletion
+.I0412 23:26:53.738421 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:53.741571   318 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:53.741636   320 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:53.741608   319 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:53.741755   322 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:53.741730   321 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:53.742172 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x4828bd30) got event_name: TaskCompletion
+I0412 23:26:53.760229 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:53.762370   323 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:53.762431   325 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:53.762408   324 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:53.762521   327 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:53.762485   326 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:53.762893 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x486b63a0) got event_name: TaskCompletion
+I0412 23:26:53.780284 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:53.783604   328 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:53.783656   329 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:53.783717   330 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:53.783754   331 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:53.783809   332 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:53.783869   333 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:53.784637 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x48411ad0) got event_name: TaskCompletion
+I0412 23:26:53.802320 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:53.805032   334 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:53.805087   337 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:53.805117   338 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:53.805069   336 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:53.805054   335 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:53.805176   339 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:53.805850 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x48298e10) got event_name: TaskCompletion
+I0412 23:26:53.821767 31990 op_registry.cc:112] CreateOp directly from OpDesc is deprecated. It should only beused in unit tests. Use CreateOp(const OpDesc& op_desc) instead.
+I0412 23:26:53.825735 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:53.828372   340 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:53.828410   341 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:53.828441   342 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:53.828495   343 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:53.828567   344 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:53.829139 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x48365b70) got event_name: TaskCompletion
+I0412 23:26:53.832263 31990 op_function_common.cc:910] Start Process 3
+I0412 23:26:53.832311 31990 op_function_common.cc:926] Start Process bit_length
+I0412 23:26:53.832320 31990 op_function_common.cc:910] Start Process 5
+I0412 23:26:53.832322 31990 op_function_common.cc:926] Start Process round_type
+I0412 23:26:53.832325 31990 op_function_common.cc:910] Start Process 7
+I0412 23:26:53.832327 31990 op_function_common.cc:926] Start Process op_role
+I0412 23:26:53.833408 31990 op_registry.cc:112] CreateOp directly from OpDesc is deprecated. It should only beused in unit tests. Use CreateOp(const OpDesc& op_desc) instead.
+I0412 23:26:53.837682 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:53.840759   345 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:53.840802   346 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:53.840878   347 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:53.840905   349 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:53.840951   348 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:53.840953   350 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:53.842087 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x6217050) got event_name: TaskCompletion
+I0412 23:26:53.844363 31990 op_function_common.cc:910] Start Process 3
+I0412 23:26:53.844413 31990 op_function_common.cc:926] Start Process bit_length
+I0412 23:26:53.844422 31990 op_function_common.cc:910] Start Process 5
+I0412 23:26:53.844425 31990 op_function_common.cc:926] Start Process round_type
+I0412 23:26:53.844427 31990 op_function_common.cc:910] Start Process 7
+I0412 23:26:53.844430 31990 op_function_common.cc:926] Start Process op_role
+.I0412 23:26:53.848584 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:53.851341   351 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:53.851388   352 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:53.851480   353 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:53.851516   354 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:53.851558   355 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:53.852074 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x4a963d60) got event_name: TaskCompletion
+I0412 23:26:53.869277 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:53.871642   356 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:53.871678   357 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:53.871750   358 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:53.871786   360 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:53.871851   359 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:53.872165 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x48298e10) got event_name: TaskCompletion
+I0412 23:26:53.889495 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:53.891988   361 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:53.892122   365 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:53.892158   366 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:53.892169   364 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:53.892131   363 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:53.892408   362 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:53.892935 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x4837ca70) got event_name: TaskCompletion
+I0412 23:26:53.915376 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:53.918951   367 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:53.919008   368 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:53.919085   369 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:53.919128   372 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:53.919087   370 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:53.919183   371 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:53.919862 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x4a71aee0) got event_name: TaskCompletion
+I0412 23:26:53.939268 31990 op_registry.cc:112] CreateOp directly from OpDesc is deprecated. It should only beused in unit tests. Use CreateOp(const OpDesc& op_desc) instead.
+I0412 23:26:53.943614 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:53.946761   373 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:53.946836   374 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:53.946902   375 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:53.946915   376 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:53.946977   377 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:53.947527 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x482f6f60) got event_name: TaskCompletion
+I0412 23:26:53.950114 31990 op_function_common.cc:910] Start Process 3
+I0412 23:26:53.950170 31990 op_function_common.cc:926] Start Process bit_length
+I0412 23:26:53.950178 31990 op_function_common.cc:910] Start Process 5
+I0412 23:26:53.950189 31990 op_function_common.cc:926] Start Process round_type
+I0412 23:26:53.950191 31990 op_function_common.cc:910] Start Process 7
+I0412 23:26:53.950193 31990 op_function_common.cc:926] Start Process op_role
+I0412 23:26:53.951133 31990 op_registry.cc:112] CreateOp directly from OpDesc is deprecated. It should only beused in unit tests. Use CreateOp(const OpDesc& op_desc) instead.
+I0412 23:26:53.954820 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:53.958097   378 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:53.958148   379 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:53.958168   380 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:53.958182   381 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:53.958232   382 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:53.958257   383 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:53.959100 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x4857ff50) got event_name: TaskCompletion
+I0412 23:26:53.962242 31990 op_function_common.cc:910] Start Process 3
+I0412 23:26:53.962301 31990 op_function_common.cc:926] Start Process bit_length
+I0412 23:26:53.962307 31990 op_function_common.cc:910] Start Process 5
+I0412 23:26:53.962309 31990 op_function_common.cc:926] Start Process round_type
+I0412 23:26:53.962311 31990 op_function_common.cc:910] Start Process 7
+I0412 23:26:53.962313 31990 op_function_common.cc:926] Start Process op_role
+.I0412 23:26:53.989090 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:53.992305   384 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:53.992350   385 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:53.992362   386 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:53.992419   387 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:53.992436   388 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:53.992663 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x4821b6f0) got event_name: TaskCompletion
+I0412 23:26:54.001122 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:54.004284   389 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:54.004335   390 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:54.004346   391 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:54.004386   392 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:54.004412   393 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:54.004678 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x48695a50) got event_name: TaskCompletion
+I0412 23:26:54.013967 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:54.017867   394 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:54.017946   395 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:54.018002   397 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:54.018007   396 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:54.018014   398 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:54.018055   399 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:54.019091 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x4a6d0970) got event_name: TaskCompletion
+I0412 23:26:54.030418 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:54.035801   400 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:54.035852   401 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:54.035950   402 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:54.035981   403 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:54.036047   404 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:54.036087   405 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:54.037115 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x482643a0) got event_name: TaskCompletion
+I0412 23:26:54.041569 31990 op_registry.cc:112] CreateOp directly from OpDesc is deprecated. It should only beused in unit tests. Use CreateOp(const OpDesc& op_desc) instead.
+I0412 23:26:54.046670 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:54.049655   406 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:54.049767   409 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:54.049800   410 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:54.049716   408 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:54.049703   407 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:54.050107 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x48649440) got event_name: TaskCompletion
+I0412 23:26:54.058857 31990 op_function_common.cc:910] Start Process 8
+I0412 23:26:54.058912 31990 op_function_common.cc:926] Start Process bit_length
+I0412 23:26:54.058919 31990 op_function_common.cc:910] Start Process 10
+I0412 23:26:54.058921 31990 op_function_common.cc:926] Start Process moving_rate
+I0412 23:26:54.058923 31990 op_function_common.cc:910] Start Process 12
+I0412 23:26:54.058925 31990 op_function_common.cc:926] Start Process is_test
+I0412 23:26:54.058928 31990 op_function_common.cc:910] Start Process 14
+I0412 23:26:54.058930 31990 op_function_common.cc:926] Start Process round_type
+I0412 23:26:54.058933 31990 op_function_common.cc:910] Start Process 16
+I0412 23:26:54.058934 31990 op_function_common.cc:926] Start Process op_role
+I0412 23:26:54.059556 31990 op_registry.cc:112] CreateOp directly from OpDesc is deprecated. It should only beused in unit tests. Use CreateOp(const OpDesc& op_desc) instead.
+I0412 23:26:54.065817 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:54.069974   411 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:54.070026   412 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:54.070036   413 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:54.070101   414 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:54.070129   415 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:54.070149   416 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:54.071043 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x4ab23a40) got event_name: TaskCompletion
+I0412 23:26:54.081707 31990 op_function_common.cc:910] Start Process 8
+I0412 23:26:54.081765 31990 op_function_common.cc:926] Start Process bit_length
+I0412 23:26:54.081773 31990 op_function_common.cc:910] Start Process 10
+I0412 23:26:54.081775 31990 op_function_common.cc:926] Start Process moving_rate
+I0412 23:26:54.081779 31990 op_function_common.cc:910] Start Process 12
+I0412 23:26:54.081781 31990 op_function_common.cc:926] Start Process is_test
+I0412 23:26:54.081785 31990 op_function_common.cc:910] Start Process 14
+I0412 23:26:54.081787 31990 op_function_common.cc:926] Start Process round_type
+I0412 23:26:54.081790 31990 op_function_common.cc:910] Start Process 16
+I0412 23:26:54.081794 31990 op_function_common.cc:926] Start Process op_role
+.I0412 23:26:54.090739 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:54.094004   417 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:54.094050   418 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:54.094069   419 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:54.094122   420 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:54.094220   421 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:54.094463 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x482f9200) got event_name: TaskCompletion
+I0412 23:26:54.102510 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:54.106339   422 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:54.106410   426 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:54.106343   423 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:54.106364   424 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:54.106377   425 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:54.106665 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x483e9400) got event_name: TaskCompletion
+I0412 23:26:54.114240 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:54.119091   427 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:54.119144   428 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:54.119185   430 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:54.119220   429 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:54.119251   431 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:54.119290   432 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:54.120293 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x4aa8d170) got event_name: TaskCompletion
+I0412 23:26:54.129565 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:54.134084   433 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:54.134152   435 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:54.134156   434 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:54.134223   436 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:54.134275   437 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:54.134286   438 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:54.135136 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x482f9200) got event_name: TaskCompletion
+.I0412 23:26:54.149585 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:54.155177   439 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:54.155237   440 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:54.155278   441 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:54.155310   442 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:54.155345   443 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:54.155393   444 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:54.156239 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x6264cd0) got event_name: TaskCompletion
+I0412 23:26:54.165338 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:54.169971   445 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:54.170033   446 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:54.170081   447 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:54.170111   448 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:54.170150   449 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:54.170205   450 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:54.171228 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x48411ad0) got event_name: TaskCompletion
+.I0412 23:26:54.179672 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:54.182771   451 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:54.182814   452 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:54.182847   453 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:54.182904   455 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:54.182874   454 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:54.183131 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x4a8d6510) got event_name: TaskCompletion
+I0412 23:26:54.192212 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:54.196324   456 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:54.196390   457 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:54.196486   458 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:54.196508   459 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:54.196624   460 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:54.196868 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x626c900) got event_name: TaskCompletion
+I0412 23:26:54.206912 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:54.211338   461 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:54.211388   462 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:54.211416   463 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:54.211613   464 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:54.211613   465 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:54.211644   466 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:54.212683 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x4aa2a010) got event_name: TaskCompletion
+I0412 23:26:54.224093 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:54.229774   467 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:54.229838   468 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:54.229939   469 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:54.230022   470 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:54.230093   471 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:54.230178   472 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:54.231279 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x48411ad0) got event_name: TaskCompletion
+.I0412 23:26:54.261633 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:54.266925   473 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:54.266981   474 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:54.267060   475 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:54.267091   476 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:54.267163   477 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:54.267210   478 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:54.268277 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x4a9a00f0) got event_name: TaskCompletion
+I0412 23:26:54.276350 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:54.280383   479 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:54.280464   480 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:54.280505   481 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:54.280565   482 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:54.280622   483 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:54.280671   484 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:54.281584 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x4ac5bfc0) got event_name: TaskCompletion
+I0412 23:26:54.292661 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:54.296763   485 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:54.296818   486 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:54.296860   487 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:54.296962   488 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:54.297015   489 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:54.297075   490 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:54.298130 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x4824ab40) got event_name: TaskCompletion
+I0412 23:26:54.316134 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:54.324168   491 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:54.324317   492 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:54.324338   493 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:54.324352   494 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:54.324462   495 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:54.324558   496 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:54.326339 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x4aa9ea10) got event_name: TaskCompletion
+I0412 23:26:54.336654 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:54.345101   497 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:54.345183   498 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:54.345233   500 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:54.345208   499 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:54.345302   501 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:54.345331   502 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:54.346252 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x4aa31c50) got event_name: TaskCompletion
+I0412 23:26:54.354948 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:54.359174   503 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:54.359225   504 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:54.359249   505 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:54.359297   507 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:54.359269   506 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:54.359316   508 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:54.360096 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x48312010) got event_name: TaskCompletion
+I0412 23:26:54.366905 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:54.369786   509 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:54.369872   511 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:54.369886   512 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:54.369843   510 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:54.369947   513 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:54.370054   514 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:54.370556 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x48312010) got event_name: TaskCompletion
+I0412 23:26:54.377900 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:54.380925   515 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:54.380996   518 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:54.381001   517 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:54.381060   519 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:54.381100   520 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:54.380973   516 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:54.381559 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x48312010) got event_name: TaskCompletion
+I0412 23:26:54.389690 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:54.393553   521 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:54.393623   522 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:54.393644   523 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:54.393723   525 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:54.393661   524 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:54.393783   526 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:54.394153 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x48312010) got event_name: TaskCompletion
+I0412 23:26:54.405728 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:54.408892   527 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:54.408979   529 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:54.408989   528 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:54.409073   531 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:54.409036   530 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:54.409109   532 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:54.409488 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x48312010) got event_name: TaskCompletion
+I0412 23:26:54.418900 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:54.423772   533 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:54.423877   536 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:54.423882   535 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:54.423823   534 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:54.424124   537 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:54.424240   538 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:54.424983 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x48312010) got event_name: TaskCompletion
+I0412 23:26:54.438277 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:54.441828   539 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:54.441901   541 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:54.441874   540 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:54.441907   542 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:54.441983   544 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:54.441984   543 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:54.442462 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x6264cd0) got event_name: TaskCompletion
+I0412 23:26:54.454301 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:54.457722   545 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:54.457793   547 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:54.457809   548 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:54.457769   546 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:54.457867   549 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:54.458112 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x485a9fb0) got event_name: TaskCompletion
+I0412 23:26:54.465464 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:54.468151   550 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:54.468207   552 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:54.468179   551 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:54.468212   553 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:54.468259   554 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:54.468463 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x4ac600c0) got event_name: TaskCompletion
+I0412 23:26:54.475875 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:54.478652   555 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:54.478711   557 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:54.478725   558 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:54.478683   556 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:54.478767   559 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:54.478983 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x62f0ae0) got event_name: TaskCompletion
+I0412 23:26:54.485833 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:54.490411   560 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:54.490478   561 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:54.490526   562 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:54.490561   563 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:54.490620   564 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:54.490684   565 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:54.491436 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x4aee2710) got event_name: TaskCompletion
+I0412 23:26:54.498143 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:54.502923   566 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:54.502970   567 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:54.502993   568 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:54.503036   569 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:54.503059   570 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:54.503108   571 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:54.503895 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x4ad86d00) got event_name: TaskCompletion
+Out
+OutScale
+out_name, out_dup: Out False
+out_name, out_dup: OutScale False
+Out
+OutScale
+Out
+OutScale
+out_name, out_dup: Out False
+out_name, out_dup: OutScale False
+Out
+OutScale
+Out
+OutScale
+out_name, out_dup: Out False
+out_name, out_dup: OutScale False
+Out
+OutScale
+Out
+OutScale
+out_name, out_dup: Out False
+out_name, out_dup: OutScale False
+Out
+OutScale
+Out
+OutScale
+out_name, out_dup: Out False
+out_name, out_dup: OutScale False
+Out
+OutScale
+Out
+OutScale
+out_name, out_dup: Out False
+out_name, out_dup: OutScale False
+Out
+OutScale
+Out
+OutScale
+out_name, out_dup: Out False
+out_name, out_dup: OutScale False
+Out
+OutScale
+Out
+OutScale
+out_name, out_dup: Out False
+out_name, out_dup: OutScale False
+Out
+OutScale
+Out
+OutScale
+out_name, out_dup: Out False
+out_name, out_dup: OutScale False
+Out
+OutScale
+Out
+OutScale
+out_name, out_dup: Out False
+out_name, out_dup: OutScale False
+Out
+OutScale
+Out
+OutScale
+out_name, out_dup: Out False
+out_name, out_dup: OutScale False
+Out
+OutScale
+Out
+OutScale
+out_name, out_dup: Out False
+out_name, out_dup: OutScale False
+Out
+OutScale
+Out
+OutScale
+out_name, out_dup: Out False
+out_name, out_dup: OutScale False
+Out
+OutScale
+Out
+OutScale
+out_name, out_dup: Out False
+out_name, out_dup: OutScale False
+Out
+OutScale
+Out
+OutScale
+out_name, out_dup: Out False
+out_name, out_dup: OutScale False
+Out
+OutScale
+Out
+OutScale
+out_name, out_dup: Out False
+out_name, out_dup: OutScale False
+Out
+OutScale
+Y
+out_name, out_dup: Y False
+out_name, out_dup: OutState False
+out_name, out_dup: OutAccum False
+out_name, out_dup: OutScale False
+Y
+Y
+out_name, out_dup: Y False
+out_name, out_dup: OutState False
+out_name, out_dup: OutAccum False
+out_name, out_dup: OutScale False
+Y
+Y
+out_name, out_dup: Y False
+out_name, out_dup: OutState False
+out_name, out_dup: OutAccum False
+out_name, out_dup: OutScale False
+Y
+Y
+out_name, out_dup: Y False
+out_name, out_dup: OutState False
+out_name, out_dup: OutAccum False
+out_name, out_dup: OutScale False
+Y
+Y
+OutScale
+out_name, out_dup: Y False
+out_name, out_dup: OutState False
+out_name, out_dup: OutAccum False
+out_name, out_dup: OutScale False
+Y
+OutScale
+Y
+OutScale
+out_name, out_dup: Y False
+out_name, out_dup: OutState False
+out_name, out_dup: OutAccum False
+out_name, out_dup: OutScale False
+Y
+OutScale
+Out
+OutScale
+out_name, out_dup: Out False
+out_name, out_dup: OutScale False
+Out
+OutScale
+Out
+OutScale
+out_name, out_dup: Out False
+out_name, out_dup: OutScale False
+Out
+OutScale
+Out
+OutScale
+out_name, out_dup: Out False
+out_name, out_dup: OutScale False
+Out
+OutScale
+Out
+OutScale
+out_name, out_dup: Out False
+out_name, out_dup: OutScale False
+Out
+OutScale
+Out
+OutScale
+out_name, out_dup: Out False
+out_name, out_dup: OutScale False
+Out
+OutScale
+Out
+OutScale
+out_name, out_dup: Out False
+out_name, out_dup: OutScale False
+Out
+OutScale
+Out
+OutScale
+out_name, out_dup: Out False
+out_name, out_dup: OutScale False
+Out
+OutScale
+Out
+OutScale
+out_name, out_dup: Out False
+out_name, out_dup: OutScale False
+Out
+OutScale
+Out
+OutScale
+out_name, out_dup: Out False
+out_name, out_dup: OutScale False
+Out
+OutScale
+Out
+OutScale
+out_name, out_dup: Out False
+out_name, out_dup: OutScale False
+Out
+OutScale
+Out
+OutScale
+out_name, out_dup: Out False
+out_name, out_dup: OutScale False
+Out
+OutScale
+Out
+OutScale
+out_name, out_dup: Out False
+out_name, out_dup: OutScale False
+Out
+OutScale
+Out
+OutScale
+out_name, out_dup: Out False
+out_name, out_dup: OutScale False
+Out
+OutScale
+Out
+OutScale
+out_name, out_dup: Out False
+out_name, out_dup: OutScale False
+Out
+OutScale
+Out
+OutScale
+out_name, out_dup: Out False
+out_name, out_dup: OutScale False
+Out
+OutScale
+Out
+OutScale
+out_name, out_dup: Out False
+out_name, out_dup: OutScale False
+Out
+OutScale
+Out
+OutScale
+Out
+OutScale
+out_name, out_dup: Out False
+out_name, out_dup: OutScale False
+Out
+OutScale
+Out
+OutScale
+Out
+OutScale
+out_name, out_dup: Out False
+out_name, out_dup: OutScale False
+Out
+OutScale
+Out
+OutScale
+Out
+OutScale
+out_name, out_dup: Out False
+out_name, out_dup: OutScale False
+Out
+OutScale
+Out
+OutScale
+Out
+OutScale
+out_name, out_dup: Out False
+out_name, out_dup: OutScale False
+Out
+OutScale
+Out
+OutScale
+Out
+OutScale
+out_name, out_dup: Out False
+out_name, out_dup: OutScale False
+Out
+OutScale
+Out
+OutScale
+Out
+OutScale
+out_name, out_dup: Out False
+out_name, out_dup: OutScale False
+Out
+OutScale
+Out
+OutScale
+Out
+OutScale
+out_name, out_dup: Out False
+out_name, out_dup: OutScale False
+Out
+OutScale
+Out
+OutScale
+Out
+OutScale
+out_name, out_dup: Out False
+out_name, out_dup: OutScale False
+Out
+OutScale
+Out
+OutScale
+out_name, out_dup: Out False
+out_name, out_dup: OutScale False
+Out
+OutScale
+Out
+OutScale
+out_name, out_dup: Out False
+out_name, out_dup: OutScale False
+Out
+OutScale
+Out
+OutScale
+Out
+OutScale
+out_name, out_dup: Out False
+out_name, out_dup: OutScale False
+Out
+OutScale
+Out
+OutScale
+out_name, out_dup: Out False
+out_name, out_dup: OutScale False
+Out
+OutScale
+Out
+OutScale
+out_name, out_dup: Out False
+out_name, out_dup: OutScale False
+Out
+OutScale
+Out
+OutScale
+out_name, out_dup: Out False
+out_name, out_dup: OutScale False
+Out
+OutScale
+Out
+OutScale
+out_name, out_dup: Out False
+out_name, out_dup: OutScale False
+Out
+OutScale
+Out
+OutScale
+out_name, out_dup: Out False
+out_name, out_dup: OutScale False
+Out
+OutScale
+Out
+OutScale
+out_name, out_dup: Out False
+out_name, out_dup: OutScale False
+Out
+OutScale
+Out
+OutScale
+out_name, out_dup: Out False
+out_name, out_dup: OutScale False
+Out
+OutScale
+Out
+OutScale
+out_name, out_dup: Out False
+out_name, out_dup: OutScale False
+Out
+OutScale
+Out
+OutScale
+out_name, out_dup: Out False
+out_name, out_dup: OutScale False
+Out
+OutScale
+Out
+OutScale
+out_name, out_dup: Out False
+out_name, out_dup: OutScale False
+Out
+OutScale
+Out
+OutAccum
+OutState
+OutScale
+out_name, out_dup: Out False
+out_name, out_dup: OutScale False
+out_name, out_dup: OutState False
+out_name, out_dup: OutAccum False
+Out
+OutAccum
+OutState
+OutScale
+Out
+OutAccum
+OutState
+OutScale
+out_name, out_dup: Out False
+out_name, out_dup: OutScale False
+out_name, out_dup: OutState False
+out_name, out_dup: OutAccum False
+Out
+OutAccum
+OutState
+OutScale
+Out
+OutAccum
+OutState
+OutScale
+out_name, out_dup: Out False
+out_name, out_dup: OutScale False
+out_name, out_dup: OutState False
+out_name, out_dup: OutAccum False
+Out
+OutAccum
+OutState
+OutScale
+Out
+OutAccum
+OutState
+OutScale
+out_name, out_dup: Out False
+out_name, out_dup: OutScale False
+out_name, out_dup: OutState False
+out_name, out_dup: OutAccum False
+Out
+OutAccum
+OutState
+OutScale
+Out
+OutAccum
+OutState
+OutScale
+out_name, out_dup: Out False
+out_name, out_dup: OutScale False
+out_name, out_dup: OutState False
+out_name, out_dup: OutAccum False
+Out
+OutAccum
+OutState
+OutScale
+Out
+OutAccum
+OutState
+OutScale
+out_name, out_dup: Out False
+out_name, out_dup: OutScale False
+out_name, out_dup: OutState False
+out_name, out_dup: OutAccum False
+Out
+OutAccum
+OutState
+OutScale
+Out
+OutAccum
+OutState
+OutScale
+out_name, out_dup: Out False
+out_name, out_dup: OutScale False
+out_name, out_dup: OutState False
+out_name, out_dup: OutAccum False
+Out
+OutAccum
+OutState
+OutScale
+[dtype, is_test, round_type]: <class 'numpy.float16'> False TiesToEven
+Out
+OutScale
+OutScales
+Out
+OutScale
+OutScales
+out_name, out_dup: Out False
+out_name, out_dup: OutScale False
+out_name, out_dup: OutScales False
+Out
+OutScale
+OutScales
+[dtype, is_test, round_type]: <class 'numpy.float16'> False TiesAwayFromZero
+Out
+OutScale
+OutScales
+Out
+OutScale
+OutScales
+out_name, out_dup: Out False
+out_name, out_dup: OutScale False
+out_name, out_dup: OutScales False
+Out
+OutScale
+OutScales
+[dtype, is_test, round_type]: <class 'numpy.float16'> True TiesToEven
+Out
+Out
+out_name, out_dup: Out False
+out_name, out_dup: OutScale False
+out_name, out_dup: OutScales False
+Out
+[dtype, is_test, round_type]: <class 'numpy.float16'> True TiesAwayFromZero
+Out
+Out
+out_name, out_dup: Out False
+out_name, out_dup: OutScale False
+out_name, out_dup: OutScales False
+Out
+[dtype, is_test, round_type]: <class 'numpy.float32'> False TiesToEven
+Out
+OutScale
+OutScales
+Out
+OutScale
+OutScales
+out_name, out_dup: Out False
+out_name, out_dup: OutScale False
+out_name, out_dup: OutScales False
+Out
+OutScale
+OutScales
+Out
+OutScale
+OutScales
+Out
+OutScale
+OutScales
+out_name, out_dup: Out False
+I0412 23:26:54.512579 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:54.517194   572 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:54.517277   573 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:54.517294   574 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:54.517331   575 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:54.517401   576 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:54.517457   577 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:54.518314 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x483475f0) got event_name: TaskCompletion
+I0412 23:26:54.527006 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:54.529892   578 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:54.529954   579 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:54.529994   580 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:54.530035   581 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:54.530045   582 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:54.530201 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x4aea4540) got event_name: TaskCompletion
+I0412 23:26:54.537410 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:54.540076   583 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:54.540181   584 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:54.540228   586 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:54.540218   585 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:54.540318   587 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:54.540493 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x4addbb10) got event_name: TaskCompletion
+I0412 23:26:54.547415 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:54.550180   588 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:54.550240   592 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:54.550184   589 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:54.550199   590 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:54.550213   591 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:54.550484 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x4aab0420) got event_name: TaskCompletion
+I0412 23:26:54.558521 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:54.562566   593 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:54.562628   595 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:54.562614   594 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:54.562721   596 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:54.562810   597 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:54.562831   598 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:54.563827 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x4addbb10) got event_name: TaskCompletion
+I0412 23:26:54.570814 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:54.574420   599 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:54.574471   600 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:54.574484   601 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:54.574532   602 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:54.574584   603 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:54.574617   604 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:54.575330 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x4af0b7b0) got event_name: TaskCompletion
+I0412 23:26:54.582646 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:54.588913   605 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:54.588977   606 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:54.589001   607 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:54.589032   608 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:54.589066   609 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:54.589092   610 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:54.589903 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x4addbb10) got event_name: TaskCompletion
+I0412 23:26:54.596115 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:54.598812   611 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:54.598876   612 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:54.598929   614 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:54.598937   613 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:54.598953   615 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:54.599121 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x4adf8fa0) got event_name: TaskCompletion
+I0412 23:26:54.605806 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:54.607920   616 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:54.607960   617 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:54.607996   618 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:54.608031   619 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:54.608093   620 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:54.608212 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x4a96bc40) got event_name: TaskCompletion
+I0412 23:26:54.616472 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:54.621084   621 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:54.621133   622 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:54.621150   623 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:54.621204   624 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:54.621217   625 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:54.621346 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x4ad959b0) got event_name: TaskCompletion
+I0412 23:26:54.627545 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:54.631393   626 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:54.631489   627 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:54.631558   628 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:54.631604   630 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:54.631569   629 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:54.631654   631 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:54.632114 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x4a99c5f0) got event_name: TaskCompletion
+I0412 23:26:54.639981 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:54.643201   632 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:54.643288   634 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:54.643301   633 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:54.643391   636 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:54.643357   635 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:54.643457   637 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:54.643843 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x4aa31240) got event_name: TaskCompletion
+I0412 23:26:54.651014 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:54.653990   638 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:54.654042   639 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:54.654076   640 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:54.654114   641 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:54.654168   642 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:54.654201   643 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:54.654697 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x4ab919b0) got event_name: TaskCompletion
+I0412 23:26:54.664538 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:54.667691   644 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:54.667753   645 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:54.667897   646 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:54.667953   648 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:54.667924   647 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:54.668119 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x4aeed3a0) got event_name: TaskCompletion
+I0412 23:26:54.674466 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:54.677031   649 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:54.677065   650 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:54.677093   654 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:54.677078   651 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:54.677134   655 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:54.677278 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x4a8d2c00) got event_name: TaskCompletion
+I0412 23:26:54.684325 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:54.686865   656 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:54.686916   657 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:54.686930   658 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:54.686991   659 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:54.687003   660 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:54.687153 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x4aef71c0) got event_name: TaskCompletion
+I0412 23:26:54.694510 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:54.702370   661 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:54.702406   662 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:54.702417   663 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:54.702440   664 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:54.702543   666 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:54.702492   665 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:54.702960 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x6213190) got event_name: TaskCompletion
+I0412 23:26:54.709101 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:54.712167   667 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:54.712225   668 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:54.712304   669 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:54.712344   670 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:54.712381   671 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:54.712446   672 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:54.712791 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x6213190) got event_name: TaskCompletion
+I0412 23:26:54.720064 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:54.722699   673 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:54.722750   674 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:54.722801   675 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:54.722829   677 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:54.722813   676 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:54.722864   678 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:54.723326 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x6213190) got event_name: TaskCompletion
+.I0412 23:26:54.748842 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:54.753273   679 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:54.753320   680 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:54.753352   682 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:54.753329   681 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:54.753404   683 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:54.753593 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x6b1c6d0) got event_name: TaskCompletion
+I0412 23:26:54.763876 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:54.768354   684 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:54.768483   685 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:54.768600   686 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:54.768600   687 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:54.768611   688 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:54.768836 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x6b1c6d0) got event_name: TaskCompletion
+I0412 23:26:54.779480 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:54.786252   689 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:54.786320   691 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:54.786346   690 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:54.786422   692 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:54.786461   693 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:54.786502   694 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:54.787380 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x6b1c6d0) got event_name: TaskCompletion
+I0412 23:26:54.796456 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:54.801976   695 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:54.802028   696 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:54.802100   697 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:54.802145   698 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:54.802264   699 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:54.802307   700 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:54.803354 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x6b1c6d0) got event_name: TaskCompletion
+.I0412 23:26:54.827661 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:54.830183   702 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:54.830262   706 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:54.830298   707 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:54.830224   703 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:54.830240   704 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:54.830433 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x6213190) got event_name: TaskCompletion
+I0412 23:26:54.836479 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:54.838707   708 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:54.838774   710 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:54.838733   709 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:54.838882   716 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:54.838814   715 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:54.838992 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x6213190) got event_name: TaskCompletion
+I0412 23:26:54.845306 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:54.848033   717 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:54.848079   718 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:54.848122   720 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:54.848104   719 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:54.848178   721 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:54.848208   723 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:54.848703 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x6213190) got event_name: TaskCompletion
+I0412 23:26:54.854809 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:54.857359   724 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:54.857409   725 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:54.857421   726 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:54.857453   727 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:54.857488   728 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:54.857522   729 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:54.857897 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x6213190) got event_name: TaskCompletion
+.I0412 23:26:54.888046 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:54.891706   730 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:54.891832   731 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:54.891887   732 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:54.891927   734 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:54.891916   733 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:54.892129 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x6b1c6d0) got event_name: TaskCompletion
+I0412 23:26:54.899406 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:54.905880   735 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:54.905910   736 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:54.905936   737 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:54.906011   738 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:54.906126   739 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:54.906311 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x4abb1140) got event_name: TaskCompletion
+I0412 23:26:54.915967 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:54.924345   740 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:54.924427   742 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:54.924401   741 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:54.924513   743 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:54.924592   744 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:54.924630   745 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:54.925626 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x486a9170) got event_name: TaskCompletion
+I0412 23:26:54.934724 31990 interpreter_util.cc:597] Static build: 0
+I0412 23:26:54.941147   746 nonblocking_threadpool.h:251] GarbageCollector_thread_0 started 
+I0412 23:26:54.941200   747 nonblocking_threadpool.h:251] HostTasks_thread_0 started 
+I0412 23:26:54.941227   748 nonblocking_threadpool.h:251] HostTasks_thread_1 started 
+I0412 23:26:54.941243   749 nonblocking_threadpool.h:251] HostTasks_thread_2 started 
+I0412 23:26:54.941287   750 nonblocking_threadpool.h:251] HostTasks_thread_3 started 
+I0412 23:26:54.941325   751 nonblocking_threadpool.h:251] DeviceKernelLaunch_thread_0 started 
+I0412 23:26:54.942198 31990 pir_interpreter.cc:1663] main_thread_blocker_(0x4a93c2f0) got event_name: TaskCompletion
+.
+----------------------------------------------------------------------
+Ran 20 tests in 4.901s
+
+OK
+out_name, out_dup: OutScale False
+out_name, out_dup: OutScales False
+Out
+OutScale
+OutScales
+[dtype, is_test, round_type]: <class 'numpy.float32'> False TiesAwayFromZero
+Out
+OutScale
+OutScales
+Out
+OutScale
+OutScales
+out_name, out_dup: Out False
+out_name, out_dup: OutScale False
+out_name, out_dup: OutScales False
+Out
+OutScale
+OutScales
+Out
+OutScale
+OutScales
+Out
+OutScale
+OutScales
+out_name, out_dup: Out False
+out_name, out_dup: OutScale False
+out_name, out_dup: OutScales False
+Out
+OutScale
+OutScales
+[dtype, is_test, round_type]: <class 'numpy.float32'> True TiesToEven
+Out
+Out
+out_name, out_dup: Out False
+out_name, out_dup: OutScale False
+out_name, out_dup: OutScales False
+Out
+Out
+Out
+out_name, out_dup: Out False
+out_name, out_dup: OutScale False
+out_name, out_dup: OutScales False
+Out
+[dtype, is_test, round_type]: <class 'numpy.float32'> True TiesAwayFromZero
+Out
+Out
+out_name, out_dup: Out False
+out_name, out_dup: OutScale False
+out_name, out_dup: OutScales False
+Out
+Out
+Out
+out_name, out_dup: Out False
+out_name, out_dup: OutScale False
+out_name, out_dup: OutScales False
+Out
+Out
+OutAccum
+OutState
+OutScale
+out_name, out_dup: Out False
+out_name, out_dup: OutScale False
+out_name, out_dup: OutState False
+out_name, out_dup: OutAccum False
+Out
+OutAccum
+OutState
+OutScale
+Out
+OutAccum
+OutState
+OutScale
+out_name, out_dup: Out False
+out_name, out_dup: OutScale False
+out_name, out_dup: OutState False
+out_name, out_dup: OutAccum False
+Out
+OutAccum
+OutState
+OutScale
+Y
+out_name, out_dup: Y False
+out_name, out_dup: OutState False
+out_name, out_dup: OutAccum False
+out_name, out_dup: OutScale False
+Y
+Y
+out_name, out_dup: Y False
+out_name, out_dup: OutState False
+out_name, out_dup: OutAccum False
+out_name, out_dup: OutScale False
+Y
+Y
+OutScale
+OutAccum
+OutState
+out_name, out_dup: Y False
+out_name, out_dup: OutState False
+out_name, out_dup: OutAccum False
+out_name, out_dup: OutScale False
+Y
+OutScale
+OutAccum
+OutState
+Y
+OutScale
+OutAccum
+OutState
+out_name, out_dup: Y False
+out_name, out_dup: OutState False
+out_name, out_dup: OutAccum False
+out_name, out_dup: OutScale False
+Y
+OutScale
+OutAccum
+OutState
