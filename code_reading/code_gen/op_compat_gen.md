@@ -36,7 +36,14 @@ cc_library(
 x
 ```
 
+```
 
+op_gen_file=/home/cmcandy/code/PD/Develop_Diary/code_reading/code_gen/test_op_compat/op_compat_gen.py
+op_compat_yaml_file=/home/cmcandy/code/PD/Develop_Diary/code_reading/code_gen/test_op_compat/op_compat.yaml
+op_compat_source_file=/home/cmcandy/code/PD/Develop_Diary/code_reading/code_gen/test_op_compat/op_compat_info.cc
+op_compat_templat_file=/home/cmcandy/code/PD/Develop_Diary/code_reading/code_gen/test_op_compat/op_compat_info.cc.j2
+python ${op_gen_file}  --op_compat_yaml_file ${op_compat_yaml_file} --output_source_file ${op_compat_source_file}
+```
 
 
 ### op_compat_info.cc
@@ -124,4 +131,52 @@ def OpNameNormalizerInitialization(
     op_compat_yaml_file: str = "", output_source_file: str = ""
 ) -> None:
 ....
+
+```
+
+- 主要逻辑
+```
+# yaml都进来，dict数组
+with open(op_compat_yaml_file, "r") as f:
+        op_compat_infos = yaml.safe_load(f)
+```
+- 后有for循环，逐个遍历op_compat_infos，其中有三个逻辑：
+- **insert_new_mappings、insert_new_arg_mappings、insert_new_mutable_attributes**
+- 下面是GPT的功能解释：
+
+1. `insert_new_mappings(op_name_str: str) -> str`
+
+    - 这个函数用于插入新的映射关系。输入参数 `op_name_str` 是一个字符串，表示操作的名字。函数内部首先调用 `to_phi_and_fluid_op_name(op_name_str)`，得到两个名字：`normalized_name` 和 `legacy_name`。如果这两个名字相同，则直接返回它们。否则，将键值对 `{legacy_name: normalized_name}` 添加到字典 `op_name_mappings` 中，并返回这两个名字。这个函数主要用于处理操作名的映射关系。
+
+2. `insert_new_arg_mappings(op_name: str, arg_mapping: Dict[str, str])`
+
+    - 这个函数用于插入新的参数映射关系。输入参数 `op_name` 是一个字符串，表示操作的名字；`arg_mapping` 是一个字典，表示参数的映射关系。函数首先检查 `op_name` 是否存在于字典 `op_arg_name_mappings` 中，如果不存在，则为 `op_name` 创建一个空字典。然后，使用 `update()` 方法将 `arg_mapping` 更新到 `op_arg_name_mappings[op_name]` 中。这个函数主要用于处理操作参数的映射关系。
+
+3. `insert_new_mutable_attributes(op_name: str, mutable_attribute_infos: Dict[str, Dict[str, str]])`
+
+    - 这个函数用于插入新的可变属性信息。输入参数 `op_name` 是一个字符串，表示操作的名字；`mutable_attribute_infos` 是一个嵌套字典，表示可变属性的信息。函数首先检查 `op_name` 是否存在于字典 `op_mutable_attributes` 和 `op_mutable_attribute_infos` 中，如果不存在，则为 `op_name` 创建一个空集合和一个空字典。接着，遍历 `mutable_attribute_infos`，将属性名添加到 `op_mutable_attributes[op_name]` 中，并将属性信息添加到 `op_mutable_attribute_infos[op_name]` 中。这个函数主要用于处理操作的可变属性信息。
+
+**那么主体逻辑就是**：
+
+这段代码逻辑主要用于处理 `op_compat_item` 中的映射关系和属性。`op_compat_item` 是一个字典，包含了操作的兼容性信息。下面逐步解释这段逻辑：
+1. 首先，调用 `insert_new_mappings(op_compat_item["op"])` 函数，获取操作的映射关系。`legacy_name` 是旧的操作名。
+
+2. 初始化一个空列表 `legacy_backward_op_names`，用于存储反向操作的旧名字。如果 `op_compat_item` 中包含 `"backward"` 键，那么将反向操作名的映射关系添加到 `legacy_backward_op_names` 列表中。
+
+3. 如果 `op_compat_item` 中包含 `"inputs"` 键，那么调用 `insert_new_arg_mappings()` 函数，将输入参数的映射关系添加到 `legacy_name` 和 `legacy_backward_op_names` 中。
+
+4. 如果 `op_compat_item` 中包含 `"attrs"` 键，那么调用 `insert_new_arg_mappings()` 函数，将属性参数的映射关系添加到 `legacy_name` 和 `legacy_backward_op_names` 中。
+
+5. 如果 `op_compat_item` 中包含 `"outputs"` 键，那么调用 `insert_new_arg_mappings()` 函数，将输出参数的映射关系添加到 `legacy_name` 和 `legacy_backward_op_names` 中。
+
+6. 如果 `op_compat_item` 中包含 `"int_array"` 键，那么调用 `insert_new_mutable_attributes()` 函数，将整数数组类型的可变属性信息添加到 `legacy_name` 和 `legacy_backward_op_names` 中。
+
+7. 如果 `op_compat_item` 中包含 `"scalar"` 键，那么调用 `insert_new_mutable_attributes()` 函数，将标量类型的可变属性信息添加到 `legacy_name` 和 `legacy_backward_op_names` 中。
+
+
+### 疑问
+- 在有些配置中，有extra项，但是这里没有解析到，可能是在别的地方有用？TODO
+```
+  extra :
+    attrs : [int round_type = 1]
 ```
