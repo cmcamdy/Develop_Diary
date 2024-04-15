@@ -1,6 +1,7 @@
 import paddle
 from paddle.distribution import distribution
 from paddle.distribution import Beta
+import math
 
 class LKJCholesky(distribution.Distribution):
     
@@ -10,6 +11,7 @@ class LKJCholesky(distribution.Distribution):
         self.dim = dim
         
         self.concentration = paddle.to_tensor(concentration)
+        # batch_shape = paddle.to_tensor(self.concentration.shape)
         batch_shape = self.concentration.shape
         event_shape = paddle.to_tensor((dim, dim))
         
@@ -24,13 +26,13 @@ class LKJCholesky(distribution.Distribution):
         beta_conc1 = offset + 0.5
         beta_conc0 = marginal_conc.unsqueeze(-1) - 0.5 * offset
         self._beta = Beta(beta_conc1, beta_conc0)
-        
+
         super().__init__(batch_shape, event_shape)
         
     def sample(self, sample_shape=paddle.to_tensor([])):
         y = self._beta.sample(sample_shape).unsqueeze(-1)
         u_normal = paddle.randn(
-            self._extended_shape(sample_shape), dtype=y.dtype
+            self._extend_shape(sample_shape), dtype=y.dtype
         ).tril(-1)
         u_hypersphere = u_normal / u_normal.norm(axis=-1, keepdim=True)
         # Replace NaNs in first row
@@ -59,15 +61,8 @@ class LKJCholesky(distribution.Distribution):
         normalize_term = pi_constant + numerator - denominator
         return unnormalized_log_pdf - normalize_term
 
-    def _extended_shape(self, sample_shape):
-        if not isinstance(sample_shape, paddle.Tensor):
-            sample_shape = paddle.to_tensor(sample_shape)
-        # Helper function to compute the extended shape for sampling
-        print(sample_shape, self.batch_shape, self.event_shape)
-        return paddle.to_tensor(sample_shape + self.batch_shape + self.event_shape)
-    
-    
+  
 if __name__ == '__main__':
-    
     l = LKJCholesky(3, 0.5)
-    l.sample()  # l @ l.T is a sample of a correlation 3x3 matrix
+    res = l.sample()  # l @ l.T is a sample of a correlation 3x3 matrix
+    print(res)
