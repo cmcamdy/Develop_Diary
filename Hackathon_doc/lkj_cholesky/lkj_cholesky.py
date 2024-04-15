@@ -3,6 +3,17 @@ from paddle.distribution import distribution
 from paddle.distribution import Beta
 import math
 
+def mvlgamma_paddle(a, p):
+    """
+    :param a: A scalar or tensor of shape (...,)
+    :param p: An integer representing the dimension of the multivariate gamma function
+    :return: The result of the multivariate gamma function for each element in a
+    """
+    p_float = float(p)
+    order = paddle.arange(0, p_float, dtype=a.dtype)
+    return paddle.sum(paddle.lgamma(a.unsqueeze(-1) - 0.5 * order), axis=-1)
+
+
 class LKJCholesky(distribution.Distribution):
     
     def __init__(self, dim, concentration=1.0):
@@ -11,7 +22,6 @@ class LKJCholesky(distribution.Distribution):
         self.dim = dim
         
         self.concentration = paddle.to_tensor(concentration)
-        # batch_shape = paddle.to_tensor(self.concentration.shape)
         batch_shape = self.concentration.shape
         event_shape = paddle.to_tensor((dim, dim))
         
@@ -45,19 +55,23 @@ class LKJCholesky(distribution.Distribution):
         return w
 
     def log_prob(self, value):
+        
         diag_elems = paddle.diagonal(value, offset=0, axis1=-1, axis2=-2)[..., 1:]
         order = paddle.arange(2, self.dim + 1, dtype=self.concentration.dtype)
         order = 2 * (self.concentration - 1).unsqueeze(-1) + self.dim - order
+        
         unnormalized_log_pdf = paddle.sum(order * paddle.log(diag_elems), axis=-1)
         # Compute normalization constant (page 1999 of [1])
         dm1 = self.dim - 1
+        
         alpha = self.concentration + 0.5 * dm1
         denominator = paddle.lgamma(alpha) * dm1
-        numerator = paddle.mvlgamma(alpha - 0.5, dm1)
+        numerator = paddle.mvlgamma_paddle(alpha - 0.5, dm1)
         # pi_constant in [1] is D * (D - 1) / 4 * log(pi)
         # pi_constant in multigammaln is (D - 1) * (D - 2) / 4 * log(pi)
         # hence, we need to add a pi_constant = (D - 1) * log(pi) / 2
         pi_constant = 0.5 * dm1 * math.log(math.pi)
+        
         normalize_term = pi_constant + numerator - denominator
         return unnormalized_log_pdf - normalize_term
 
@@ -66,3 +80,6 @@ if __name__ == '__main__':
     l = LKJCholesky(3, 0.5)
     res = l.sample()  # l @ l.T is a sample of a correlation 3x3 matrix
     print(res)
+    print(l.log_prob(res))
+    
+    

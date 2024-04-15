@@ -132,9 +132,12 @@ class LKJCholesky(Distribution):
         diag_elems = value.diagonal(dim1=-1, dim2=-2)[..., 1:]
         order = torch.arange(2, self.dim + 1, device=self.concentration.device)
         order = 2 * (self.concentration - 1).unsqueeze(-1) + self.dim - order
+        
         unnormalized_log_pdf = torch.sum(order * diag_elems.log(), dim=-1)
         # Compute normalization constant (page 1999 of [1])
         dm1 = self.dim - 1
+        print(unnormalized_log_pdf, dm1)
+        
         alpha = self.concentration + 0.5 * dm1
         denominator = torch.lgamma(alpha) * dm1
         numerator = torch.mvlgamma(alpha - 0.5, dm1)
@@ -149,3 +152,4 @@ if __name__ == "__main__":
     l = LKJCholesky(3, 0.5)
     res = l.sample()  # l @ l.T is a sample of a correlation 3x3 matrix
     print(res)
+    print(l.log_prob(res))

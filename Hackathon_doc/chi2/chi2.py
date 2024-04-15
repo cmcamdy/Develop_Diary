@@ -8,11 +8,10 @@ class Chi2(Gamma):
     This is exactly equivalent to Gamma(concentration=0.5*df, rate=0.5)
 
     Example::
-
-        >>> # xdoctest: +IGNORE_WANT("non-deterministic")
-        >>> m = Chi2(paddle.to_tensor([1.0]))
-        >>> m.sample()  # Chi2 distributed with shape df=1
-        tensor([ 0.1046])
+        .. code-block:: python
+            >>> m = Chi2(paddle.to_tensor([1.0]))
+            >>> m.sample() 
+            tensor([ 0.1046])
 
     Args:
         df (float or Tensor): shape parameter of the distribution
