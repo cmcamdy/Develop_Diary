@@ -78,9 +78,11 @@ class LKJCholesky(Distribution):
         beta_conc1 = offset + 0.5
         beta_conc0 = marginal_conc.unsqueeze(-1) - 0.5 * offset
         self._beta = Beta(beta_conc1, beta_conc0)
-
-        print("batch_shape:", batch_shape)
-        print("event_shape:", event_shape)
+        
+        # print("torch:", beta_conc1)
+        # print("torch:", beta_conc0)
+        # print("batch_shape:", batch_shape)
+        # print("event_shape:", event_shape)
         super().__init__(batch_shape, event_shape, validate_args)
 
     def expand(self, batch_shape, _instance=None):
@@ -103,10 +105,30 @@ class LKJCholesky(Distribution):
         #   the correlation matrix instead of the correlation matrix itself. As such,
         #   we only need to generate `w`.
         y = self._beta.sample(sample_shape).unsqueeze(-1)
-        print("self._extended_shape(sample_shape):", self._extended_shape(sample_shape))
+        # print("torch:", self._beta.mean,)
+        # print("torch:", self._beta.variance)
+        # print("torch:", self._beta.entropy())
+        print("torch:", sample_shape)
+        print("torch:", y)
+        # print("torch:", self._beta.sample(sample_shape))
+        # values = [[0.24940725], [0.59289634], [0.77829844]]
+        # device = torch.device('cuda:0')
+        # y = torch.tensor(values, device=device, requires_grad=False)
+        # print("torch:", y)
+        
         u_normal = torch.randn(
             self._extended_shape(sample_shape), dtype=y.dtype, device=y.device
         ).tril(-1)
+        # print("torch _extended_shape:", self._batch_shape)
+        # print("torch _extended_shape:", self._event_shape)
+        # print("torch _extended_shape:", self._extended_shape(sample_shape))
+        # values = [[ 0.0000,  0.0000,  0.0000],
+        #             [ 0.1452,  0.0000,  0.0000],
+        #             [-0.6229, -0.3284,  0.0000]]
+        # u_normal = torch.tensor(values, device=device, requires_grad=False)
+        # print("torch:", u_normal)
+        
+        
         u_hypersphere = u_normal / u_normal.norm(dim=-1, keepdim=True)
         # Replace NaNs in first row
         u_hypersphere[..., 0, :].fill_(0.0)
