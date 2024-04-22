@@ -1,14 +1,17 @@
-import paddle
-import torch
+import paddle  
+  
+# 原始tensor  
+original_tensor = paddle.to_tensor([[1, 0], [2, 0], [2, 1]], dtype='int64')  
+  
+# 创建索引矩阵  
+index_matrix = paddle.arange(0, 2).unsqueeze(1).tile([3, 1])  # 创建[0, 0, 1, 1, 2, 2]的索引  
 
-# 设置 PaddlePaddle 的随机种子
-paddle.seed(42)
-# 生成一个形状为 [3, 1] 的标准正态分布随机数张量
-paddle_tensor = paddle.randn([3, 1])
-print("PaddlePaddle random tensor:\n", paddle_tensor.numpy())
-
-# 设置 PyTorch 的随机种子
-torch.manual_seed(42)
-# 生成一个形状为 [3, 1] 的标准正态分布随机数张量
-torch_tensor = torch.randn([3, 1])
-print("PyTorch random tensor:\n", torch_tensor.numpy())
+print(index_matrix)
+# # 重复原始tensor的行  
+repeated_tensor = paddle.repeat_interleave(original_tensor, 2, axis=0)  
+  
+# # 合并索引和重复的tensor  
+result_tensor = paddle.concat([index_matrix, repeated_tensor], axis=1)  
+  
+  
+print(result_tensor)

@@ -80,6 +80,8 @@ def construct_matrix_lower(p):
         paddle.Tensor: A square lower triangular matrix of shape (n, n), where n is the matrix size, with its elements
                        filled from the input tensor `p`.
     """
+    print(p.shape)
+    import pdb; pdb.set_trace()
     dim = int((math.sqrt(paddle.to_tensor(1 + 8*p.shape[0])) + 1) / 2)
     matrix = paddle.zeros(shape=[dim, dim], dtype='float32')
     
@@ -162,37 +164,37 @@ class LKJCholesky(distribution.Distribution):
         super().__init__(batch_shape, event_shape)
 
     def _onion(self, sample_shape):
-    """
-    Generate a sample using the "onion" method.
+        """
+        Generate a sample using the "onion" method.
 
-    Args:
-        sample_shape (tuple): The shape of the samples to be generated.
+        Args:
+            sample_shape (tuple): The shape of the samples to be generated.
 
-    Returns:
-        w (paddle.Tensor): The Cholesky factor of the sampled correlation matrix.
-    """
-    # Sample y from the Beta distribution
-    y = self._beta.sample(sample_shape).unsqueeze(-1)
+        Returns:
+            w (paddle.Tensor): The Cholesky factor of the sampled correlation matrix.
+        """
+        # Sample y from the Beta distribution
+        y = self._beta.sample(sample_shape).unsqueeze(-1)
 
-    # Sample u from the standard normal distribution and create a lower triangular matrix
-    u_normal = paddle.randn(
-        self._extend_shape(sample_shape), dtype=y.dtype
-    ).tril(-1)
+        # Sample u from the standard normal distribution and create a lower triangular matrix
+        u_normal = paddle.randn(
+            self._extend_shape(sample_shape), dtype=y.dtype
+        ).tril(-1)
 
-    # Normalize u to get u_hypersphere
-    u_hypersphere = u_normal / u_normal.norm(axis=-1, keepdim=True)
-    # Replace NaNs in first row
-    u_hypersphere[..., 0, :].fill_(0.0)
-    w = paddle.sqrt(y) * u_hypersphere
+        # Normalize u to get u_hypersphere
+        u_hypersphere = u_normal / u_normal.norm(axis=-1, keepdim=True)
+        # Replace NaNs in first row
+        u_hypersphere[..., 0, :].fill_(0.0)
+        w = paddle.sqrt(y) * u_hypersphere
 
-    # Fill diagonal elements; clamp for numerical stability
-    eps = paddle.finfo(w.dtype).tiny
-    diag_elems = paddle.clip(
-        1 - paddle.sum(w**2, axis=-1), min=eps
-    ).sqrt()
+        # Fill diagonal elements; clamp for numerical stability
+        eps = paddle.finfo(w.dtype).tiny
+        diag_elems = paddle.clip(
+            1 - paddle.sum(w**2, axis=-1), min=eps
+        ).sqrt()
 
-    w += paddle.diag_embed(diag_elems)
-    return w
+        w += paddle.diag_embed(diag_elems)
+        return w
 
     def _cvine(self, sample_shape):
         """
@@ -243,59 +245,59 @@ class LKJCholesky(distribution.Distribution):
 
 
     def log_prob(self, value):
-    """
-    Compute the log probability density of the given Cholesky factor under the LKJ distribution.
-    
-    Note about computing Jacobian of the transformation from Cholesky factor to
-    correlation matrix:
-    
-      Assume C = L@Lt and L = (1 0 0; a \sqrt(1-a^2) 0; b c \sqrt(1-b^2-c^2)), we have
-      Then off-diagonal lower triangular vector of L is transformed to the off-diagonal
-      lower triangular vector of C by the transform:
-          (a, b, c) -> (a, b, ab + c\sqrt(1-a^2))
-      Hence, Jacobian = 1 * 1 * \sqrt(1 - a^2) = \sqrt(1 - a^2) = L22, where L22
-          is the 2th diagonal element of L
-      Generally, for a D dimensional matrix, we have:
-          Jacobian = L22^(D-2) * L33^(D-3) * ... * Ldd^0
-    
-    From [1], we know that probability of a correlation matrix is propotional to
-      determinant ** (concentration - 1) = prod(L_ii ^ 2(concentration - 1))
-    On the other hand, Jabobian of the transformation from Cholesky factor to
-    correlation matrix is:
-      prod(L_ii ^ (D - i))
-    So the probability of a Cholesky factor is propotional to
-      prod(L_ii ^ (2 * concentration - 2 + D - i)) =: prod(L_ii ^ order_i)
-    with order_i = 2 * concentration - 2 + D - i,
-    i = 2..D (we omit the element i = 1 because L_11 = 1)
-    
-    Args:
-        value (paddle.Tensor): The Cholesky factor of the correlation matrix for which the log probability density is to be computed.
+        """
+        Compute the log probability density of the given Cholesky factor under the LKJ distribution.
+        
+        Note about computing Jacobian of the transformation from Cholesky factor to
+        correlation matrix:
+        
+        Assume C = L@Lt and L = (1 0 0; a \sqrt(1-a^2) 0; b c \sqrt(1-b^2-c^2)), we have
+        Then off-diagonal lower triangular vector of L is transformed to the off-diagonal
+        lower triangular vector of C by the transform:
+            (a, b, c) -> (a, b, ab + c\sqrt(1-a^2))
+        Hence, Jacobian = 1 * 1 * \sqrt(1 - a^2) = \sqrt(1 - a^2) = L22, where L22
+            is the 2th diagonal element of L
+        Generally, for a D dimensional matrix, we have:
+            Jacobian = L22^(D-2) * L33^(D-3) * ... * Ldd^0
+        
+        From [1], we know that probability of a correlation matrix is propotional to
+        determinant ** (concentration - 1) = prod(L_ii ^ 2(concentration - 1))
+        On the other hand, Jabobian of the transformation from Cholesky factor to
+        correlation matrix is:
+        prod(L_ii ^ (D - i))
+        So the probability of a Cholesky factor is propotional to
+        prod(L_ii ^ (2 * concentration - 2 + D - i)) =: prod(L_ii ^ order_i)
+        with order_i = 2 * concentration - 2 + D - i,
+        i = 2..D (we omit the element i = 1 because L_11 = 1)
+        
+        Args:
+            value (paddle.Tensor): The Cholesky factor of the correlation matrix for which the log probability density is to be computed.
 
-    Returns:
-        log_prob (paddle.Tensor): The log probability density of the given Cholesky factor under the LKJ distribution.
-    """
-    # 1.Compute the order vector.
-    diag_elems = paddle.diagonal(value, offset=0, axis1=-1, axis2=-2)[..., 1:]
-    order = paddle.arange(2, self.dim + 1, dtype=self.concentration.dtype)
-    order = 2 * (self.concentration - 1).unsqueeze(-1) + self.dim - order
+        Returns:
+            log_prob (paddle.Tensor): The log probability density of the given Cholesky factor under the LKJ distribution.
+        """
+        # 1.Compute the order vector.
+        diag_elems = paddle.diagonal(value, offset=0, axis1=-1, axis2=-2)[..., 1:]
+        order = paddle.arange(2, self.dim + 1, dtype=self.concentration.dtype)
+        order = 2 * (self.concentration - 1).unsqueeze(-1) + self.dim - order
 
-    # 2.Compute the unnormalized log probability density
-    unnormalized_log_pdf = paddle.sum(
-        order * paddle.log(diag_elems), axis=-1
-    )
+        # 2.Compute the unnormalized log probability density
+        unnormalized_log_pdf = paddle.sum(
+            order * paddle.log(diag_elems), axis=-1
+        )
 
-    # 3.Compute the normalization constant (page 1999 of [1])
-    dm1 = self.dim - 1
-    alpha = self.concentration + 0.5 * dm1
-    denominator = paddle.lgamma(alpha) * dm1
-    numerator = mvlgamma(alpha - 0.5, dm1)
+        # 3.Compute the normalization constant (page 1999 of [1])
+        dm1 = self.dim - 1
+        alpha = self.concentration + 0.5 * dm1
+        denominator = paddle.lgamma(alpha) * dm1
+        numerator = mvlgamma(alpha - 0.5, dm1)
 
-    # 4.Compute the constant term related to pi
-    # pi_constant in [1] is D * (D - 1) / 4 * log(pi)
-    # pi_constant in multigammaln is (D - 1) * (D - 2) / 4 * log(pi)
-    # hence, we need to add a pi_constant = (D - 1) * log(pi) / 2
-    pi_constant = 0.5 * dm1 * math.log(math.pi)
+        # 4.Compute the constant term related to pi
+        # pi_constant in [1] is D * (D - 1) / 4 * log(pi)
+        # pi_constant in multigammaln is (D - 1) * (D - 2) / 4 * log(pi)
+        # hence, we need to add a pi_constant = (D - 1) * log(pi) / 2
+        pi_constant = 0.5 * dm1 * math.log(math.pi)
 
-    # 5.Compute the normalization term and return the final log probability density:
-    normalize_term = pi_constant + numerator - denominator
-    return unnormalized_log_pdf - normalize_term
+        # 5.Compute the normalization term and return the final log probability density:
+        normalize_term = pi_constant + numerator - denominator
+        return unnormalized_log_pdf - normalize_term
