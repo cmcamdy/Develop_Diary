@@ -48,27 +48,29 @@ def matrix_to_tril(x, diagonal=0):
     rows, cols = tril_indices(matrix_dim, diagonal)
     return x[..., rows, cols]
 
-def vec_to_tril_matrix(p):
+def vec_to_tril_matrix(p, diag=0):
     """
     Constructs a batch of lower triangular matrices from a given input tensor `p`.
     """
     # p.shape = [other_dims, L, 1]
     # Calculate the dimension of the square matrix based on the last but one dimension of `p`
-    dim = int((math.sqrt(paddle.to_tensor(1 + 8*p.shape[-2])) + 1) / 2)
+    last_dim = p.shape[-2]
+    
+    dim = int(math.sqrt(paddle.to_tensor(1 + 8 * last_dim))/ 2 - diag)
     
     # Flatten the input tensor to a 1D array 
     p_flatten = p.flatten()
 
     # Define the output shape, which adds two dimensions for the square matrix
     output_shape = tuple(p.shape[:-2]) + (dim, dim)
-    shape0 = p_flatten.shape[0] // p.shape[-2]
+    shape0 = p_flatten.shape[0] // last_dim
 
     # Create index_matrix = [index0, rows, cols]
     rows, cols = paddle.meshgrid(paddle.arange(dim), paddle.arange(dim))
     mask = rows > cols
     lower_indices = paddle.stack([rows[mask], cols[mask]], axis=1)
     repeated_lower_indices = paddle.repeat_interleave(lower_indices, shape0, axis=0)  
-    index0 = paddle.arange(shape0).unsqueeze(1).tile([dim, 1]) 
+    index0 = paddle.arange(shape0).unsqueeze(1).tile([last_dim, 1]) 
     index_matrix = paddle.concat([index0, repeated_lower_indices], axis=1)  
     
     # Sort the indices
@@ -81,6 +83,27 @@ def vec_to_tril_matrix(p):
     
     return matrix
 
+def tril_matrix_to_vec(mat: paddle.Tensor, diag: int = 0) -> paddle.Tensor:  
+    r"""  
+    Convert a `D x D` matrix or a batch of matrices into a (batched) vector  
+    which comprises of lower triangular elements from the matrix in row order.  
+    """  
+    out_shape = mat.shape[:-2]
+    n = mat.shape[-1]  
+    if diag < -n or diag >= n:  
+        raise ValueError(f"diag ({diag}) provided is outside [{-n}, {n-1}].")  
+  
+    rows, cols = paddle.meshgrid(paddle.arange(n), paddle.arange(n))
+    tril_mask = diag + rows >= cols 
+    
+    vec_len = (n + diag) * (n + diag + 1)// 2
+    out_shape.append(vec_len)
+    
+    # Use the mask to index the lower triangular elements from the input matrix  
+    vec = paddle.masked_select(mat, tril_mask).reshape(out_shape)
+    # vec = paddle.masked_select(mat, tril_mask)
+    return vec  
+  
 
 class LKJCholesky(distribution.Distribution):
     """
@@ -197,9 +220,12 @@ class LKJCholesky(distribution.Distribution):
         # Sample beta and calculate partial correlations
         beta_sample = self._beta.sample(sample_shape).unsqueeze(-1)
         partial_correlation = 2 * beta_sample - 1
-
+        
+        if(self.dim == 2):
+            partial_correlation = partial_correlation.unsqueeze(-2)
+            
         # Construct the lower triangular matrix from the partial correlations
-        partial_correlation = vec_to_tril_matrix(partial_correlation)
+        partial_correlation = vec_to_tril_matrix(partial_correlation, -1)
 
         # Clip partial correlations for numerical stability
         eps = paddle.finfo(beta_sample.dtype).tiny
