@@ -25,14 +25,6 @@ def mvlgamma(a, p):
     """
     Computes the multivariate gamma function for each element in the input tensor `a` with dimension `p`.
     The multivariate gamma function is an extension of the gamma function to multiple dimensions.
-    Args:
-        a (paddle.Tensor): A scalar or tensor of shape (...,), representing the input values for the
-                           multivariate gamma function.
-        p (int): An integer representing the dimension of the multivariate gamma function.
-    
-    Returns:
-        paddle.Tensor: A tensor with the same shape as the input tensor `a`, containing the result of the
-                       multivariate gamma function for each element in `a`.
     """
     p_float = float(p)
     order = paddle.arange(0, p_float, dtype=a.dtype)
@@ -41,13 +33,6 @@ def mvlgamma(a, p):
 def tril_indices(n, k=0):
     """
     Returns the indices of the lower triangular part of an n x n matrix, including the k-th diagonal.
-    Args:
-        n (int): The size of the square matrix (n x n).
-        k (int, optional): The diagonal to include in the lower triangular part. Default is 0, which
-                           corresponds to the main diagonal.
-    Returns:
-        tuple: A tuple containing two 1D tensors, one for the row indices and one for the column indices
-               of the non-zero elements in the lower triangular matrix.
     """
     full_matrix = paddle.ones((n, n), dtype='int32')
     tril_matrix = paddle.tril(full_matrix, diagonal=k)
@@ -58,38 +43,41 @@ def tril_indices(n, k=0):
 def matrix_to_tril(x, diagonal=0):
     """
     Extracts the lower triangular part of the input matrix or batch of matrices `x`, including the specified diagonal.
-    Args:
-        x (paddle.Tensor): A square matrix or a batch of square matrices of shape (..., n, n), where n is the matrix size.
-        diagonal (int, optional): The diagonal to include in the lower triangular part. Default is 0, which corresponds
-                                  to the main diagonal.
-    Returns:
-        paddle.Tensor: A 1D tensor or a batch of 1D tensors containing the elements of the lower triangular parts of the
-                       input matrix or matrices `x`, including the specified diagonal.
     """
     matrix_dim = x.shape[-1]
     rows, cols = tril_indices(matrix_dim, diagonal)
     return x[..., rows, cols]
 
-def construct_matrix_lower(p):
+def vec_to_tril_matrix(p):
     """
-    Constructs a lower triangular matrix from a 1D tensor `p` containing the elements of the lower triangular part.
-    Args:
-        p (paddle.Tensor): A 1D tensor containing the elements of the lower triangular part, including the main diagonal.
-                           Its length must be a triangular number (i.e., 1, 3, 6, 10, ...).
-    Returns:
-        paddle.Tensor: A square lower triangular matrix of shape (n, n), where n is the matrix size, with its elements
-                       filled from the input tensor `p`.
+    Constructs a batch of lower triangular matrices from a given input tensor `p`.
     """
-    print(p.shape)
-    import pdb; pdb.set_trace()
-    dim = int((math.sqrt(paddle.to_tensor(1 + 8*p.shape[0])) + 1) / 2)
-    matrix = paddle.zeros(shape=[dim, dim], dtype='float32')
+    # p.shape = [other_dims, L, 1]
+    # Calculate the dimension of the square matrix based on the last but one dimension of `p`
+    dim = int((math.sqrt(paddle.to_tensor(1 + 8*p.shape[-2])) + 1) / 2)
     
+    # Flatten the input tensor to a 1D array 
+    p_flatten = p.flatten()
+
+    # Define the output shape, which adds two dimensions for the square matrix
+    output_shape = tuple(p.shape[:-2]) + (dim, dim)
+    shape0 = p_flatten.shape[0] // p.shape[-2]
+
+    # Create index_matrix = [index0, rows, cols]
     rows, cols = paddle.meshgrid(paddle.arange(dim), paddle.arange(dim))
     mask = rows > cols
-    
     lower_indices = paddle.stack([rows[mask], cols[mask]], axis=1)
-    matrix = paddle.scatter_nd_add(matrix, lower_indices, paddle.flatten(p))
+    repeated_lower_indices = paddle.repeat_interleave(lower_indices, shape0, axis=0)  
+    index0 = paddle.arange(shape0).unsqueeze(1).tile([dim, 1]) 
+    index_matrix = paddle.concat([index0, repeated_lower_indices], axis=1)  
+    
+    # Sort the indices
+    sorted_indices = paddle.argsort(index_matrix[:, 0])
+    index_matrix = index_matrix[sorted_indices]
+    
+    # Set the value
+    matrix = paddle.zeros(shape=(shape0, dim, dim), dtype=p.dtype)
+    matrix = paddle.scatter_nd_add(matrix, index_matrix, p_flatten).reshape(output_shape)
     
     return matrix
 
@@ -211,7 +199,7 @@ class LKJCholesky(distribution.Distribution):
         partial_correlation = 2 * beta_sample - 1
 
         # Construct the lower triangular matrix from the partial correlations
-        partial_correlation = construct_matrix_lower(partial_correlation)
+        partial_correlation = vec_to_tril_matrix(partial_correlation)
 
         # Clip partial correlations for numerical stability
         eps = paddle.finfo(beta_sample.dtype).tiny

@@ -16,7 +16,7 @@ np.random.seed(2024)
 paddle.seed(2024)
 
 
-def lkj_cholesky_onion():
+def matrix_to_tril_vec(x, diagonal=-1):
     pass
 
 
@@ -24,6 +24,8 @@ def lkj_cholesky_onion():
 @parameterize.parameterize_cls(
     (parameterize.TEST_CASE_NAME, 'dim', 'concentration', 'sample_method'),
     [
+        ('2-onion', 2, 1.0, "onion"),
+        ('2-cvine', 2, 1.0, "cvine"),
         ('3-onion', 3, 1.0, "onion"),
         ('3-cvine', 3, 1.0, "cvine")
     ]
@@ -36,14 +38,12 @@ class TestLKJCholesky(unittest.TestCase):
             
         self._paddle_lkj_cholesky = lkj_cholesky.LKJCholesky(dim, concentration, sample_method)
                 
-    def test_shape(self):
-        # print(self._paddle_lkj_cholesky.dim)
-        # print((self._paddle_lkj_cholesky.dim, self._paddle_lkj_cholesky.dim))
+    def test_sample_shape(self):
         cases = [
-            # {
-            #     'input': (),
-            #     'expect': () + (self._paddle_lkj_cholesky.dim, self._paddle_lkj_cholesky.dim),
-            # },
+            {
+                'input': (),
+                'expect': () + (self._paddle_lkj_cholesky.dim, self._paddle_lkj_cholesky.dim),
+            },
             {
                 'input': (4, 2),
                 'expect': (4, 2) + (self._paddle_lkj_cholesky.dim, self._paddle_lkj_cholesky.dim),
@@ -51,49 +51,14 @@ class TestLKJCholesky(unittest.TestCase):
         ]
         for case in cases:
             self.assertTrue(tuple(self._paddle_lkj_cholesky.sample(case.get('input')).shape) == case.get('expect'))
-            
-           
-    # def test_variance(self):
-    #     with paddle.base.dygraph.guard(self.place):
-    #         np.testing.assert_allclose(
-    #             self._paddle_chi2.variance,
-    #             scipy.stats.chi2.var(self.df),
-    #             rtol=config.RTOL.get(
-    #                 str(self._paddle_chi2.df.numpy().dtype)
-    #             ),
-    #             atol=config.ATOL.get(
-    #                 str(self._paddle_chi2.df.numpy().dtype)
-    #             ),
-    #         )
-           
-    # def test_entropy(self):
-    #     with paddle.base.dygraph.guard(self.place):
-    #         np.testing.assert_allclose(
-    #             self._paddle_chi2.entropy(),
-    #             scipy.stats.chi2.entropy(self.df),
-    #             rtol=config.RTOL.get(str(self.df.dtype)),
-    #             atol=config.ATOL.get(str(self.df.dtype)),
-    #         )
 
-    # def test_prob(self):
-    #     value = np.random.rand(*self._paddle_chi2.df.shape)
-    #     with paddle.base.dygraph.guard(self.place):
-    #         np.testing.assert_allclose(
-    #             self._paddle_chi2.prob(paddle.to_tensor(value)),
-    #             scipy.stats.chi2.pdf(value, self.df),
-    #             rtol=config.RTOL.get(str(self.df.dtype)),
-    #             atol=config.ATOL.get(str(self.df.dtype)),
-    #         )
-
-    # def test_log_prob(self):
-    #     value = np.random.rand(*self._paddle_chi2.df.shape)
-    #     with paddle.base.dygraph.guard(self.place):
-    #         np.testing.assert_allclose(
-    #             self._paddle_chi2.log_prob(paddle.to_tensor(value)),
-    #             scipy.stats.chi2.logpdf(value, self.df),
-    #             rtol=config.RTOL.get(str(self.df.dtype)),
-    #             atol=config.ATOL.get(str(self.df.dtype)),
-    #         )
+           
+    def test_log_prob(self):
+        value = np.random.rand(self._paddle_lkj_cholesky.dim)
+        print(value)
+        sample = self._paddle_lkj_cholesky.sample()
+        log_prob = self._paddle_lkj_cholesky.log_prob(sample)
+        sample_tril = matrix_to_tril_vec(sample, diagonal = -1)
 
 
 if __name__ == '__main__':
