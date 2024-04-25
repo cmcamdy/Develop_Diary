@@ -43,18 +43,11 @@ def tril_cholesky_to_tril_corr(x):
     x = x + diag
     return tril_matrix_to_vec(x @ x.T, -1)  
 
-# 创建一个3x3的下三角矩阵  
-# matrix = torch.tensor([[[1, 0, 0], [2, 3, 0], [4, 5, 6]],
-#                         [[1, 0, 0], [2, 3, 0], [4, 5, 6]]], dtype=torch.float32)  
-matrix = torch.tensor([[1, 0, 0], [2, 3, 0], [4, 5, 6]], dtype=torch.float32)  
-  
-# 调用函数将矩阵转换为向量  
-# vector = tril_matrix_to_vec(matrix, diag=-1)  
 
-vector = torch.tensor([ 0.65644526,  0.43036091, -0.41606992], dtype=torch.float32)
+vector = torch.tensor([-0.91035604,  0.55142891, -0.67164946], dtype=torch.float32)
+# vector = torch.tensor([[ 0.48528507,  0.40442318,  0.61717522],
+#                         [-0.41349775,  0.64750606, -0.46594250]], dtype=torch.float32)
 # 输出结果  
-print("Original Matrix:")  
-print(matrix)  
 print("\nConverted Vector:")  
 print(vector)
 

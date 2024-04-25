@@ -21,14 +21,12 @@ from paddle.distribution.beta import Beta
 __all__ = ["LKJCholesky"]
 
 
-def mvlgamma(a, p):
-    """
-    Computes the multivariate gamma function for each element in the input tensor `a` with dimension `p`.
-    The multivariate gamma function is an extension of the gamma function to multiple dimensions.
-    """
-    p_float = float(p)
-    order = paddle.arange(0, p_float, dtype=a.dtype)
-    return paddle.sum(paddle.lgamma(a.unsqueeze(-1) - 0.5 * order), axis=-1)
+def mvlgamma(a, p):  
+    pi = paddle.to_tensor(math.pi, dtype=a.dtype)
+    j = paddle.arange(1, p + 1, dtype=a.dtype)
+    gammaln_terms = paddle.lgamma(a.unsqueeze(-1) + (1 - j) / 2)
+    gammaln_sum = paddle.sum(gammaln_terms, axis=-1)
+    return (p * (p - 1) / 4) * paddle.log(pi) + gammaln_sum
 
 def tril_indices(n, k=0):
     """
@@ -143,7 +141,10 @@ class LKJCholesky(distribution.Distribution):
 
     """
     def __init__(self, dim, concentration=1.0, sample_method="onion"):
-        if dim < 2:
+        if(dim >= 2):
+            # print("wtf???")
+            pass
+        elif dim < 2:
             raise ValueError(
                 f"Expected dim to be an integer greater than or equal to 2. Found dim={dim}."
             )

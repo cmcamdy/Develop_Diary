@@ -5,10 +5,10 @@ def func(x):
     return paddle.sum(x * x, axis=1)
 
 # 示例输入，一个 2x2 的多维 Tensor
-x = paddle.to_tensor([-0.91035604,  0.55142891, -0.77994263], stop_gradient=False)
+x = paddle.to_tensor([[1.0, 2.0], [3.0, 4.0]], stop_gradient=False)
 
 # 计算雅可比矩阵
-y = x
+y = func(x)
 print(y.shape)
 jacobian = []
 for i in range(y.shape[0]):

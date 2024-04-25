@@ -198,7 +198,6 @@ class TestGammaSample(unittest.TestCase):
                     feed=self.feeds,
                     fetch_list=self._paddle_chi2.sample(case.get('input')),
                 )
-
                 self.assertTrue(data.shape == case.get('expect'))
 
     def test_rsample_shape(self):
