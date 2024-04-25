@@ -17,6 +17,8 @@ import math
 import paddle
 from paddle.distribution import distribution
 from paddle.distribution.beta import Beta
+from functools import reduce
+import operator
 
 __all__ = ["LKJCholesky"]
 
@@ -42,26 +44,26 @@ def matrix_to_tril(x, diagonal=0):
     """
     Extracts the lower triangular part of the input matrix or batch of matrices `x`, including the specified diagonal.
     """
-    matrix_dim = x.shape[-1]
-    rows, cols = tril_indices(matrix_dim, diagonal)
-    return x[..., rows, cols]
+    tril_mask = paddle.tril(paddle.ones_like(x), diagonal=diagonal)
+    tril_elements = paddle.masked_select(x, tril_mask.astype('bool'))
+    return tril_elements
 
-def vec_to_tril_matrix(p, diag=0):
+def vec_to_tril_matrix(p, dim, last_dim, sample_shape=(), diag=0):
     """
     Constructs a batch of lower triangular matrices from a given input tensor `p`.
     """
     # p.shape = [other_dims, L, 1]
     # Calculate the dimension of the square matrix based on the last but one dimension of `p`
-    last_dim = p.shape[-2]
-    
-    dim = int(math.sqrt(paddle.to_tensor(1 + 8 * last_dim))/ 2 - diag)
-    
-    # Flatten the input tensor to a 1D array 
-    p_flatten = p.flatten()
-
+    print(p.shape)
     # Define the output shape, which adds two dimensions for the square matrix
-    output_shape = tuple(p.shape[:-2]) + (dim, dim)
-    shape0 = p_flatten.shape[0] // last_dim
+    output_shape = sample_shape + (dim, dim)
+    p_flatten = p
+    shape0 = reduce(operator.mul, sample_shape)
+    # p_flatten = p.reshape((shape0 * last_dim,))
+    # p_flatten = p.flatten()
+
+    # Flatten the input tensor to a 1D array 
+    # p_flatten = p.flatten()
 
     # Create index_matrix = [index0, rows, cols]
     rows, cols = paddle.meshgrid(paddle.arange(dim), paddle.arange(dim))
@@ -77,6 +79,8 @@ def vec_to_tril_matrix(p, diag=0):
     
     # Set the value
     matrix = paddle.zeros(shape=(shape0, dim, dim), dtype=p.dtype)
+    # matrix = paddle.zeros(shape=(8, 3, 3), dtype=p.dtype)
+    # import pdb; pdb.set_trace()
     matrix = paddle.scatter_nd_add(matrix, index_matrix, p_flatten).reshape(output_shape)
     
     return matrix
@@ -140,7 +144,7 @@ class LKJCholesky(distribution.Distribution):
                 [0.12862849, 0.01884033, 0.99151385]])
 
     """
-    def __init__(self, dim, concentration=1.0, sample_method="onion"):
+    def __init__(self, dim = 2, concentration=1.0, sample_method="onion"):
         if(dim >= 2):
             # print("wtf???")
             pass
@@ -196,16 +200,33 @@ class LKJCholesky(distribution.Distribution):
         # Normalize u to get u_hypersphere
         u_hypersphere = u_normal / u_normal.norm(axis=-1, keepdim=True)
         # Replace NaNs in first row
-        u_hypersphere[..., 0, :].fill_(0.0)
+        u_hypersphere_other = u_hypersphere[..., 1:, :]
+        zero_shape = tuple(u_hypersphere.shape[:-2]) + (1, self.dim) 
+        zero_row = paddle.zeros(shape=zero_shape, dtype=u_hypersphere.dtype)
+        u_hypersphere = paddle.concat([zero_row, u_hypersphere_other], axis=-2)
+        
+        # u_hypersphere[..., 0, :].fill_(0.0)
+        # u_hypersphere[..., 0, :] = 0.0
         w = paddle.sqrt(y) * u_hypersphere
 
         # Fill diagonal elements; clamp for numerical stability
         eps = paddle.finfo(w.dtype).tiny
-        diag_elems = paddle.clip(
-            1 - paddle.sum(w**2, axis=-1), min=eps
-        ).sqrt()
-
-        w += paddle.diag_embed(diag_elems)
+        diag_elems = paddle.clip(1 - paddle.sum(w**2, axis=-1), min=eps).sqrt()
+        
+        # import pdb; pdb.set_trace()
+        if sample_shape is () and len(self.concentration.shape) < 1:
+        # num_elems = diag_elems.shape[-1]
+        # num_elems = sample_shape + (self.dim,)
+            num_elems = self.dim
+            eye_matrix = paddle.eye(num_elems, dtype=diag_elems.dtype)
+            diag_matrix = eye_matrix * diag_elems.reshape(sample_shape + (num_elems, 1))
+        else:
+            diag_matrix = paddle.diag_embed(diag_elems)
+        w += diag_matrix
+        # print("w.shape:", w.shape)
+        # import pdb; pdb.set_trace()
+        # w += paddle.diag_embed(diag_elems)
+        # return w, diag_elems
         return w
 
     def _cvine(self, sample_shape):
@@ -218,6 +239,11 @@ class LKJCholesky(distribution.Distribution):
         Returns:
             r (paddle.Tensor): The Cholesky factor of the sampled correlation matrix.
         """
+
+        # for paddle.static, U need to set sample_shape
+        if(sample_shape is ()):
+            sample_shape = (1,)
+
         # Sample beta and calculate partial correlations
         beta_sample = self._beta.sample(sample_shape).unsqueeze(-1)
         partial_correlation = 2 * beta_sample - 1
@@ -226,7 +252,13 @@ class LKJCholesky(distribution.Distribution):
             partial_correlation = partial_correlation.unsqueeze(-2)
             
         # Construct the lower triangular matrix from the partial correlations
-        partial_correlation = vec_to_tril_matrix(partial_correlation, -1)
+        last_dim = self.dim * (self.dim - 1) // 2
+        flatten_shape = last_dim 
+        # if sample_shape is not ():
+        flatten_shape *= reduce(operator.mul, sample_shape)
+        partial_correlation = partial_correlation.reshape((flatten_shape,))
+
+        partial_correlation = vec_to_tril_matrix(partial_correlation, self.dim, last_dim, sample_shape, -1)
 
         # Clip partial correlations for numerical stability
         eps = paddle.finfo(beta_sample.dtype).tiny
@@ -247,8 +279,11 @@ class LKJCholesky(distribution.Distribution):
 
         # Calculate the final Cholesky factor
         r += paddle.eye(partial_correlation.shape[-2], partial_correlation.shape[-1])
-        return r * z1m_cumprod_sqrt_shifted
-
+        r = r * z1m_cumprod_sqrt_shifted
+        if sample_shape is (1,):
+            r = r.reshape((self.dim, self.dim))
+        return r
+    
     def sample(self, sample_shape=None):
         """Generate a sample using the specified sampling method."""
         if sample_shape is None:

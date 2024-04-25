@@ -26,6 +26,7 @@ TEST_CASE_NAME = 'suffix'
 
 
 def xrand(shape=(10, 10, 10), dtype=config.DEFAULT_DTYPE, min=1.0, max=10.0):
+    print(("xrand:",(np.random.rand(*shape).astype(dtype)) * (max - min) + min))
     return (np.random.rand(*shape).astype(dtype)) * (max - min) + min
 
 
