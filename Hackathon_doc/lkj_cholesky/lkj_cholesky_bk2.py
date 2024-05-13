@@ -13,15 +13,15 @@
 # limitations under the License.
 
 import math
-import operator
-from functools import reduce
 
 import paddle
-from paddle.base.data_feeder import check_type, convert_dtype
-from paddle.base.framework import Variable
 from paddle.distribution import distribution
 from paddle.distribution.beta import Beta
 from paddle.framework import in_dynamic_mode
+from paddle.base.data_feeder import check_type, convert_dtype
+from paddle.base.framework import Variable
+from functools import reduce
+import operator
 
 __all__ = ["LKJCholesky"]
 
@@ -35,7 +35,6 @@ def mvlgamma(a, p):
     gammaln_terms = paddle.lgamma(a.unsqueeze(-1) + (1 - j) / 2)
     gammaln_sum = paddle.sum(gammaln_terms, axis=-1)
     return (p * (p - 1) / 4) * paddle.log(pi) + gammaln_sum
-
 
 def tril_indices(n, k=0):
     """
@@ -55,71 +54,65 @@ def matrix_to_tril(x, diagonal=0):
     tril_elements = paddle.masked_select(x, tril_mask.astype('bool'))
     return tril_elements
 
-
-def vec_to_tril_matrix(
-    p_flatten, dim, last_dim, flatten_shape, sample_shape=(), diag=0
-):
+def vec_to_tril_matrix(p_flatten, dim, last_dim, flatten_shape, sample_shape=(), diag=0):
     """
     Constructs a batch of lower triangular matrices from a given input tensor `p`.
     """
     # Calculate the dimension of the square matrix based on the last but one dimension of `p`
     # Define the output shape, which adds two dimensions for the square matrix
     shape0 = flatten_shape // last_dim
-    output_shape = sample_shape + (
-        shape0 // reduce(operator.mul, sample_shape),
-        dim,
-        dim,
-    )
+    output_shape = sample_shape + (shape0 // reduce(operator.mul, sample_shape), dim, dim)
 
     # Create index_matrix = [index0, rows, cols]
     rows, cols = paddle.meshgrid(paddle.arange(dim), paddle.arange(dim))
     mask = rows > cols
     lower_indices = paddle.stack([rows[mask], cols[mask]], axis=1)
-    repeated_lower_indices = paddle.repeat_interleave(
-        lower_indices, shape0, axis=0
-    )
-    index0 = paddle.arange(shape0).unsqueeze(1).tile([last_dim, 1])
-    index_matrix = paddle.concat([index0, repeated_lower_indices], axis=1)
-
+    repeated_lower_indices = paddle.repeat_interleave(lower_indices, shape0, axis=0)  
+    index0 = paddle.arange(shape0).unsqueeze(1).tile([last_dim, 1]) 
+    index_matrix = paddle.concat([index0, repeated_lower_indices], axis=1)  
+    
     # Sort the indices
     sorted_indices = paddle.argsort(index_matrix[:, 0])
     index_matrix = index_matrix[sorted_indices]
-
+    
     # Set the value
     matrix = paddle.zeros(shape=(shape0, dim, dim), dtype=p_flatten.dtype)
-    matrix = paddle.scatter_nd_add(matrix, index_matrix, p_flatten).reshape(
-        output_shape
-    )
-
+    matrix = paddle.scatter_nd_add(matrix, index_matrix, p_flatten).reshape(output_shape)
+    
     return matrix
 
-
-def tril_matrix_to_vec(mat: paddle.Tensor, diag: int = 0) -> paddle.Tensor:
-    r"""
-    Convert a `D x D` matrix or a batch of matrices into a (batched) vector
-    which comprises of lower triangular elements from the matrix in row order.
-    """
+def tril_matrix_to_vec(mat: paddle.Tensor, diag: int = 0) -> paddle.Tensor:  
+    r"""  
+    Convert a `D x D` matrix or a batch of matrices into a (batched) vector  
+    which comprises of lower triangular elements from the matrix in row order.  
+    """  
     out_shape = mat.shape[:-2]
-    n = mat.shape[-1]
-    if diag < -n or diag >= n:
-        raise ValueError(f"diag ({diag}) provided is outside [{-n}, {n-1}].")
-
+    n = mat.shape[-1]  
+    if diag < -n or diag >= n:  
+        raise ValueError(f"diag ({diag}) provided is outside [{-n}, {n-1}].")  
+  
     rows, cols = paddle.meshgrid(paddle.arange(n), paddle.arange(n))
-    tril_mask = diag + rows >= cols
-
-    vec_len = (n + diag) * (n + diag + 1) // 2
+    tril_mask = diag + rows >= cols 
+    
+    vec_len = (n + diag) * (n + diag + 1)// 2
     out_shape += (vec_len,)
-
-    # Use the mask to index the lower triangular elements from the input matrix
+    
+    # Use the mask to index the lower triangular elements from the input matrix  
     vec = paddle.masked_select(mat, tril_mask).reshape(out_shape)
-    return vec
-
+    return vec  
+  
 
 class LKJCholesky(distribution.Distribution):
     """
     The LKJCholesky class represents the LKJ distribution over Cholesky factors of correlation matrices.
+
     This class implements the LKJ distribution over Cholesky factors of correlation matrices, as described in
-    Lewandowski, Kurowicka, and Joe (2009). It supports two sampling methods: "onion" and "cvine".
+    Lewandowski, Kurowicka, and Joe (2009)[1]. It supports two sampling methods: "onion" and "cvine".
+
+    **References**
+
+    [1] `Generating random correlation matrices based on vines and extended onion method`,
+    Daniel Lewandowski, Dorota Kurowicka, Harry Joe
 
     Args:
         dim (int): The dimension of the correlation matrices.
@@ -135,46 +128,47 @@ class LKJCholesky(distribution.Distribution):
             >>> lkj = paddle.distribution.LKJCholesky(dim=dim)
             >>> sample = lkj.sample()
             >>> sample.shape
-            [3, 3]
+            [1, 3, 3]
     """
-
-    def __init__(self, dim=2, concentration=1.0, sample_method="onion"):
+    def __init__(self, dim = 2, concentration=1.0, sample_method="onion"):
         if not in_dynamic_mode():
             check_type(
                 dim,
-                "dim",
+                'dim',
                 (int, Variable),
-                "LKJCholesky",
+                'LKJCholesky',
             )
             check_type(
                 concentration,
-                "concentration",
+                'concentration',
                 (float, list, tuple, Variable),
-                "LKJCholesky",
+                'LKJCholesky',
             )
-
+            
         # Get/convert concentration/rate to tensor.
         if self._validate_args(concentration):
             self.concentration = concentration
             self.dtype = convert_dtype(concentration.dtype)
         else:
-            [self.concentration] = self._to_tensor(concentration)
+            [self.concentration] = self._to_tensor(
+                concentration
+            )
             self.dtype = paddle.get_default_dtype()
-
+           
         self.dim = dim
         if not self.dim >= 2:
             raise ValueError(
                 f"Expected dim to be an integer greater than or equal to 2. Found dim={dim}."
             )
-
+            
         self.concentration = concentration
         if isinstance(self.concentration, float):
             self.concentration = (self.concentration,)
             # self.concentration = paddle.to_tensor([self.concentration])
-
+            
         if not isinstance(self.concentration, paddle.Tensor):
             self.concentration = paddle.to_tensor(self.concentration)
-
+        
         self.sample_method = sample_method
         batch_shape = self.concentration.shape
         event_shape = (dim, dim)
@@ -185,18 +179,14 @@ class LKJCholesky(distribution.Distribution):
             self.dim - 1,
             dtype=self.concentration.dtype,
         )
-
+        
         if sample_method == "onion":
-            offset = paddle.concat(
-                [paddle.zeros((1,), dtype=offset.dtype), offset]
-            )
+            offset = paddle.concat([paddle.zeros((1,), dtype=offset.dtype), offset])
             beta_conc1 = offset + 0.5
             beta_conc0 = marginal_conc.unsqueeze(-1) - 0.5 * offset
             self._beta = Beta(beta_conc1, beta_conc0)
         elif sample_method == "cvine":
-            offset_tril = matrix_to_tril(
-                paddle.broadcast_to(0.5 * offset, [self.dim - 1, self.dim - 1])
-            )
+            offset_tril = matrix_to_tril(paddle.broadcast_to(0.5 * offset, [self.dim - 1,self.dim - 1]))
             beta_conc = marginal_conc.unsqueeze(-1) - offset_tril
             self._beta = Beta(beta_conc, beta_conc)
         else:
@@ -204,7 +194,8 @@ class LKJCholesky(distribution.Distribution):
         super().__init__(batch_shape, event_shape)
 
     def _onion(self, sample_shape):
-        """Generate a sample using the "onion" method.
+        """
+        Generate a sample using the "onion" method.
 
         Args:
             sample_shape (tuple): The shape of the samples to be generated.
@@ -222,29 +213,28 @@ class LKJCholesky(distribution.Distribution):
 
         # Normalize u to get u_hypersphere
         u_hypersphere = u_normal / u_normal.norm(axis=-1, keepdim=True)
-
+        
         # Replace NaNs in first row
         # TODO: check if static graph can use fill_
         # u_hypersphere[..., 0, :].fill_(0.0)
         # u_hypersphere[..., 0, :] = 0.0
         u_hypersphere_other = u_hypersphere[..., 1:, :]
-        zero_shape = tuple(u_hypersphere.shape[:-2]) + (1, self.dim)
+        zero_shape = tuple(u_hypersphere.shape[:-2]) + (1, self.dim) 
         zero_row = paddle.zeros(shape=zero_shape, dtype=u_hypersphere.dtype)
         u_hypersphere = paddle.concat([zero_row, u_hypersphere_other], axis=-2)
-
+        
         w = paddle.sqrt(y) * u_hypersphere
 
         # Fill diagonal elements; clamp for numerical stability
         eps = paddle.finfo(w.dtype).tiny
-        diag_elems = paddle.clip(
-            1 - paddle.sum(w**2, axis=-1), min=eps
-        ).sqrt()
-
+        diag_elems = paddle.clip(1 - paddle.sum(w**2, axis=-1), min=eps).sqrt()
+        
         w += paddle.diag_embed(diag_elems)
         return w
 
     def _cvine(self, sample_shape):
-        """Generate a sample using the "cvine" method.
+        """
+        Generate a sample using the "cvine" method.
 
         Args:
             sample_shape (tuple): The shape of the samples to be generated.
@@ -253,32 +243,27 @@ class LKJCholesky(distribution.Distribution):
             r (paddle.Tensor): The Cholesky factor of the sampled correlation matrix.
         """
 
+        
+
         # Sample beta and calculate partial correlations
         beta_sample = self._beta.sample(sample_shape).unsqueeze(-1)
         partial_correlation = 2 * beta_sample - 1
-
-        if self.dim == 2:
+        
+        if(self.dim == 2):
             partial_correlation = partial_correlation.unsqueeze(-2)
-
+        
         # Construct the lower triangular matrix from the partial correlations
         last_dim = self.dim * (self.dim - 1) // 2
         flatten_shape = last_dim * reduce(operator.mul, sample_shape)
         if self.concentration.shape != ():
-            flatten_shape *= self.concentration.shape[-1]
-
+            flatten_shape *=  self.concentration.shape[-1]
+        
         partial_correlation = partial_correlation.reshape((flatten_shape,))
-        partial_correlation = vec_to_tril_matrix(
-            partial_correlation,
-            self.dim,
-            last_dim,
-            flatten_shape,
-            sample_shape,
-            -1,
-        )
+        partial_correlation = vec_to_tril_matrix(partial_correlation, self.dim, last_dim, flatten_shape,  sample_shape, -1)
 
         # Clip partial correlations for numerical stability
         eps = paddle.finfo(beta_sample.dtype).tiny
-        r = paddle.clip(partial_correlation, min=(-1 + eps), max=(1 - eps))
+        r = paddle.clip(partial_correlation, min=(-1+eps), max=(1-eps))
 
         # Calculate the cumulative product of the square root of 1 - z
         z = r**2
@@ -290,44 +275,63 @@ class LKJCholesky(distribution.Distribution):
             z1m_cumprod_sqrt[..., :-1],
             pad=pad_width,
             mode="constant",
-            value=1.0,
+            value=1.0
         )
 
         # Calculate the final Cholesky factor
-        r += paddle.eye(
-            partial_correlation.shape[-2], partial_correlation.shape[-1]
-        )
+        r += paddle.eye(partial_correlation.shape[-2], partial_correlation.shape[-1])
         r = r * z1m_cumprod_sqrt_shifted
         if sample_shape == (1,):
             r = r.reshape((flatten_shape // last_dim, self.dim, self.dim))
         return r
-
+    
     def sample(self, sample_shape=()):
         """Generate a sample using the specified sampling method."""
         # for paddle.static, U need to set sample_shape
-        if sample_shape == ():
+        if(sample_shape == ()):
             sample_shape = (1,)
         if self.sample_method == "onion":
             res = self._onion(sample_shape)
         else:
             res = self._cvine(sample_shape)
-
+            
         output_shape = []
         if sample_shape != (1,):
             output_shape = list(sample_shape)
-
-        if tuple(self.concentration.shape) != () and tuple(
-            self.concentration.shape
-        ) != (1,):
+        
+        if tuple(self.concentration.shape) != () and tuple(self.concentration.shape) != (1,):
             output_shape.extend(self.concentration.shape)
-
+            
         output_shape.extend([self.dim, self.dim])
-
+        
         return res.reshape(output_shape)
 
     def log_prob(self, value):
-        r"""Compute the log probability density of the given Cholesky factor under the LKJ distribution.
-
+        """
+        Compute the log probability density of the given Cholesky factor under the LKJ distribution.
+        
+        Note about computing Jacobian of the transformation from Cholesky factor to
+        correlation matrix:
+        
+        Assume C = L@Lt and L = (1 0 0; a \sqrt(1-a^2) 0; b c \sqrt(1-b^2-c^2)), we have
+        Then off-diagonal lower triangular vector of L is transformed to the off-diagonal
+        lower triangular vector of C by the transform:
+            (a, b, c) -> (a, b, ab + c\sqrt(1-a^2))
+        Hence, Jacobian = 1 * 1 * \sqrt(1 - a^2) = \sqrt(1 - a^2) = L22, where L22
+            is the 2th diagonal element of L
+        Generally, for a D dimensional matrix, we have:
+            Jacobian = L22^(D-2) * L33^(D-3) * ... * Ldd^0
+        
+        From [1], we know that probability of a correlation matrix is propotional to
+        determinant ** (concentration - 1) = prod(L_ii ^ 2(concentration - 1))
+        On the other hand, Jabobian of the transformation from Cholesky factor to
+        correlation matrix is:
+        prod(L_ii ^ (D - i))
+        So the probability of a Cholesky factor is propotional to
+        prod(L_ii ^ (2 * concentration - 2 + D - i)) =: prod(L_ii ^ order_i)
+        with order_i = 2 * concentration - 2 + D - i,
+        i = 2..D (we omit the element i = 1 because L_11 = 1)
+        
         Args:
             value (paddle.Tensor): The Cholesky factor of the correlation matrix for which the log probability density is to be computed.
 
@@ -335,9 +339,7 @@ class LKJCholesky(distribution.Distribution):
             log_prob (paddle.Tensor): The log probability density of the given Cholesky factor under the LKJ distribution.
         """
         # 1.Compute the order vector.
-        diag_elems = paddle.diagonal(value, offset=0, axis1=-1, axis2=-2)[
-            ..., 1:
-        ]
+        diag_elems = paddle.diagonal(value, offset=0, axis1=-1, axis2=-2)[..., 1:]
         order = paddle.arange(2, self.dim + 1, dtype=self.concentration.dtype)
         order = 2 * (self.concentration - 1).unsqueeze(-1) + self.dim - order
 

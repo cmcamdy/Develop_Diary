@@ -401,8 +401,6 @@ class TestChi2KL(unittest.TestCase):
         t4 = (rate2 - rate1) * (concentration1 / rate1)
         return t1 + t2 + t3 + t4
 
-
-    
     
     
 if __name__ == '__main__':

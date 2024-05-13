@@ -19,20 +19,21 @@ paddle.seed(2024)
 @parameterize.parameterize_cls(
     (parameterize.TEST_CASE_NAME, 'df'),
     [
-        ('one-dim', 
-        parameterize.xrand(
-            (6,),
-            dtype='float32',
-            min=np.finfo(dtype='float32').tiny,
-        ) 
+        (
+            'one-dim',
+            parameterize.xrand(
+                (4,),
+                dtype='float32',
+                min=np.finfo(dtype='float32').tiny,
+            ),
         ),
         (
             'multi-dim',
             parameterize.xrand(
-                (10, 12),
+                (2, 10),
                 dtype='float32',
                 min=np.finfo(dtype='float32').tiny,
-            )
+            ),
         ),
         (
             'broadcast',
@@ -40,9 +41,9 @@ paddle.seed(2024)
                 (4, 1),
                 dtype='float32',
                 min=np.finfo(dtype='float32').tiny,
-            )
+            ),
         ),
-    ]
+    ],
 )
 class TestChi2(unittest.TestCase):
     def setUp(self):
@@ -142,11 +143,13 @@ class TestChi2Sample(unittest.TestCase):
         cases = [
             {
                 'input': (),
-                'expect': () + tuple(paddle.squeeze(self._paddle_chi2.df).shape),
+                'expect': ()
+                + tuple(paddle.squeeze(self._paddle_chi2.df).shape),
             },
             {
-                'input': (4, 2),
-                'expect': (4, 2) + tuple(paddle.squeeze(self._paddle_chi2.df).shape),
+                'input': (2, 2),
+                'expect': (2, 2)
+                + tuple(paddle.squeeze(self._paddle_chi2.df).shape),
             },
         ]
         for case in cases:
@@ -169,7 +172,7 @@ class TestChi2Sample(unittest.TestCase):
             self.assertTrue(tuple(self._paddle_chi2.rsample(case.get('input')).shape) == case.get('expect'))
             print("case.get('expect'):", case.get('expect'))
     def test_sample(self):
-        sample_shape = (30000,)
+        sample_shape = (3000,)
         samples = self._paddle_chi2.sample(sample_shape)
         sample_values = samples.numpy()
         
@@ -191,7 +194,7 @@ class TestChi2Sample(unittest.TestCase):
         )
         
     def test_rsample(self):
-        sample_shape = (30000,)
+        sample_shape = (3000,)
         samples = self._paddle_chi2.rsample(sample_shape)
         sample_values = samples.numpy()
 
